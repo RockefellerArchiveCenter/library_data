@@ -2,12 +2,6 @@
 
 import os
 import json
-from configparser import ConfigParser
-import time
-from asnake.aspace import ASpace
-
-import os
-import json
 from asnake.aspace import ASpace
 aspace = ASpace(
               baseurl='http://192.168.50.4:8089',
@@ -16,11 +10,7 @@ aspace = ASpace(
               )
 repo = aspace.repositories(2)
 
-#config = ConfigParser()
-#config.read("local_settings.cfg")
-
-###Save all info (individual resources) to GitHub with file name as identifier.json
-###will need to edit paths here
+###Saves all info (resource, subjects, agents) to GitHub with file name as identifier.json
 def save_data(object_type, object):
     path = os.path.join('source_data', object.jsonmodel_type)
     if not os.path.isdir(path):
@@ -35,20 +25,15 @@ for object_type in ['resources']:
         if not (object.jsonmodel_type == 'resource' and object.id_0.startswith(("FA", "AC.", "AC", "2"))):
             print(object_type, object)
             save_data(object_type, object)
+            ###get associated subject JSON
             for subject in object.subjects:
                 aspace.get().json()
                 object_type == object.jsonmodel_type
                 print(object.json())
                 save_data(object_type, subject)
+            ##get associated agent JSON
             for agent in object.linked_agents:
                 aspace.get().json()
                 object_type == object.jsonmodel_type
                 print(object.json())
                 save_data(object_type, agent)
-
-###Also must get all subjects and agents linked to those resources
-###edit this for loop into 2 additional loops (subject, agents), edit save_data path
-#for object_type in ['subjects']:
-#    for object in getattr(aspace, object_type):
-#        print(object_type, object)
-#        save_data(object_type, object)
