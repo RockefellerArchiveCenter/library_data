@@ -35,16 +35,16 @@ for object_type in ['resources']:
         if not (object.jsonmodel_type == 'resource' and object.id_0.startswith(("FA", "AC.", "AC", "2"))):
             print(object_type, object)
             save_data(object_type, object)
-            for object in object.subjects:
+            for subject in object.subjects:
                 aspace.get().json()
-                object.jsonmodel_type == object_type
+                object_type == object.jsonmodel_type
                 print(object.json())
-                save_data(object_type, object)
-            for object in object.linked_agents:
+                save_data(object_type, subject)
+            for agent in object.linked_agents:
                 aspace.get().json()
-                object.jsonmodel_type == object_type
+                object_type == object.jsonmodel_type
                 print(object.json())
-                save_data(object_type, object)
+                save_data(object_type, agent)
 
 ###Also must get all subjects and agents linked to those resources
 ###edit this for loop into 2 additional loops (subject, agents), edit save_data path
