@@ -22,7 +22,7 @@ repo = aspace.repositories(2)
 ###Save all info (individual resources) to GitHub with file name as identifier.json
 ###will need to edit paths here
 def save_data(object_type, object):
-    path = os.path.join('source_data', object.jsonmodel_type) if (object_type == 'agent') else os.path.join('source_data', object_type)
+    path = os.path.join('source_data', object.jsonmodel_type)
     if not os.path.isdir(path):
         os.makedirs(path)
     with open(os.path.join(path, "{}.json".format(object.uri.split('/')[-1])), 'w+') as outfile:
@@ -35,14 +35,16 @@ for object_type in ['resources']:
         if not (object.jsonmodel_type == 'resource' and object.id_0.startswith(("FA", "AC.", "AC", "2"))):
             print(object_type, object)
             save_data(object_type, object)
-            for subject in object.subjects:
+            for object in object.subjects:
                 aspace.get().json()
-                print(subject.json())
-                save_data(object_type, subject)
-            for agent in object.linked_agents:
+                object.jsonmodel_type == object_type
+                print(object.json())
+                save_data(object_type, object)
+            for object in object.linked_agents:
                 aspace.get().json()
-                print(agent.json())
-                save_data(object_type, agent)
+                object.jsonmodel_type == object_type
+                print(object.json())
+                save_data(object_type, object)
 
 ###Also must get all subjects and agents linked to those resources
 ###edit this for loop into 2 additional loops (subject, agents), edit save_data path
