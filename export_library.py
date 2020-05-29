@@ -34,10 +34,14 @@ for object_type in ['resources']:
     for object in getattr(aspace, object_type):
         if not (object.jsonmodel_type == 'resource' and object.id_0.startswith(("FA", "AC.", "AC", "2"))):
             print(object_type, object)
+            for subject in object.subjects:
+                aspace.get().json()
+                print(subject.json())
             #save_data(object_type, object)
 
 ###Also must get all subjects and agents linked to those resources
 ###edit this for loop into 2 additional loops (subject, agents), edit save_data path
-#for object_type in ['agents', 'subjects']:
+#for object_type in ['subjects']:
 #    for object in getattr(aspace, object_type):
+#        print(object_type, object)
 #        save_data(object_type, object)
