@@ -6,6 +6,12 @@ from asnake.aspace import ASpace
 
 config = ConfigParser()
 config.read("local_settings.cfg")
+aspace = ASpace(
+              baseurl=config.get("ArchivesSpace", "baseURL"),
+              username=config.get("ArchivesSpace", "user"),
+              password=config.get("ArchivesSpace", "password"),
+    )
+repo = aspace.repositories(2)
 
 ###Saves all info (resource, subjects, agents) to GitHub with file name as identifier.json
 def save_data(object_type, object):
