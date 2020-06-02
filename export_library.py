@@ -3,12 +3,9 @@
 import os
 import json
 from asnake.aspace import ASpace
-aspace = ASpace(
-              baseurl='http://192.168.50.4:8089',
-              user='admin',
-              password='admin'
-              )
-repo = aspace.repositories(2)
+
+config = ConfigParser()
+config.read("local_settings.cfg")
 
 ###Saves all info (resource, subjects, agents) to GitHub with file name as identifier.json
 def save_data(object_type, object):
