@@ -17,7 +17,7 @@ from asnake.client import ASnakeClient
 client = ASnakeClient()
 repo = aspace.repositories(2)
 
-#Expects a CSV file with column resource_id, subject_id, agent_person_id, 'agent_corporate_entity_id' or 'agent_family_id' to be deleted from AS
+#Expects a CSV file with column resource_id, subject_id, agent_person_id, agent_corporate_entity_id or agent_family_id to be deleted from AS
 
 def delete_resources(data):
     with open(data, newline='') as data:
@@ -84,5 +84,6 @@ data = "test.csv"
 
 #delete_resources(data)
 #delete_subjects(data)
+#delete_agents_person(data)
 #delete_agents_corporate_entities(data)
 delete_agents_families(data)
