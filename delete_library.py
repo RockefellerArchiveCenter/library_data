@@ -4,10 +4,14 @@ import json
 import csv
 from asnake.aspace import ASpace
 aspace = ASpace(
-              baseurl='http://192.168.50.7:8089',
-              user='admin',
-              password='admin'
-              )
+              baseurl=config.get("ArchivesSpace", "baseURL"),
+              username=config.get("ArchivesSpace", "user"),
+              password=config.get("ArchivesSpace", "password"),
+    )
+
+from asnake.client import ASnakeClient
+client = ASnakeClient()
+repo = aspace.repositories(2)
 
 from asnake.client import ASnakeClient
 client = ASnakeClient()
