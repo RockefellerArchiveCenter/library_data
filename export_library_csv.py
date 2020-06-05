@@ -3,13 +3,16 @@
 import os
 import json
 import csv
+import configparser
 from asnake.aspace import ASpace
 
+config = ConfigParser()
+config.read("local_settings.cfg")
 aspace = ASpace(
-              baseurl='http://192.168.50.4:8089',
-              user='admin',
-              password='admin'
-              )
+              baseurl=config.get("ArchivesSpace", "baseURL"),
+              username=config.get("ArchivesSpace", "user"),
+              password=config.get("ArchivesSpace", "password"),
+    )
 repo = aspace.repositories(2)
 
 ###Writes library resources to a csv
