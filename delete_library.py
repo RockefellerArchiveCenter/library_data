@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 import os
 import json
-import csv
 from asnake.aspace import ASpace
+import configparser
+
+config = ConfigParser()
+config.read("local_settings.cfg")
 aspace = ASpace(
               baseurl=config.get("ArchivesSpace", "baseURL"),
               username=config.get("ArchivesSpace", "user"),
               password=config.get("ArchivesSpace", "password"),
     )
+repo = aspace.repositories(2)
+
 
 from asnake.client import ASnakeClient
-client = ASnakeClient()
-repo = aspace.repositories(2)
+
 
 from asnake.client import ASnakeClient
 client = ASnakeClient()
@@ -22,8 +26,8 @@ repo = aspace.repositories(2)
 def delete_resources(data):
     with open(data, newline='') as data:
         reader = csv.DictReader(data)
+        for row in reader:
             try:
-                for row in reader:
                 resource_id = str(row['resource_id'])
                 print(resource_id)
                 collection = repo.resources(resource_id)
