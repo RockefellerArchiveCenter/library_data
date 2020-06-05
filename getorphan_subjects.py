@@ -3,6 +3,7 @@
 import os
 import json
 import csv
+import configparser
 from asnake.aspace import ASpace
 
 config = ConfigParser()
