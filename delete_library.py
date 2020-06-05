@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import os
 import json
 from asnake.aspace import ASpace
@@ -13,14 +14,6 @@ aspace = ASpace(
     )
 repo = aspace.repositories(2)
 
-
-from asnake.client import ASnakeClient
-
-
-from asnake.client import ASnakeClient
-client = ASnakeClient()
-repo = aspace.repositories(2)
-
 #Expects a CSV file with column resource_id, subject_id, agent_person_id, agent_corporate_entity_id or agent_family_id to be deleted from AS
 
 def delete_resources(data):
@@ -29,12 +22,10 @@ def delete_resources(data):
         for row in reader:
             try:
                 resource_id = str(row['resource_id'])
-                print(resource_id)
                 collection = repo.resources(resource_id)
                 print(collection)
                 resource_json = collection.json()
                 uri = resource_json.get("uri")
-                print(uri)
                 delete = aspace.client.delete(uri)
                 print("deleted resource"+ resource_id)
             except:
