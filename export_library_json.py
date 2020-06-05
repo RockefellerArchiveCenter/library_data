@@ -3,6 +3,7 @@
 import os
 import json
 from asnake.aspace import ASpace
+import configparser
 
 config = ConfigParser()
 config.read("local_settings.cfg")
