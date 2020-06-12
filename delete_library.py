@@ -31,22 +31,17 @@ def delete_resources(data):
             except:
                 pass
 
-def delete_subjects(data):
+def delete_resources(data):
     with open(data, newline='') as data:
         reader = csv.DictReader(data)
         for row in reader:
             try:
-                subject_id = str(row['subject_id'])
-                print(subject_id)
-                subject = aspace.subjects(subject_id)
-                subject_json = subject.json()
-                uri = subject_json.get("uri")
-                print(uri)
-                delete = aspace.client.delete(uri)
-                print("deleted subject"+ subject_id)
+                uri = "/repositories/2/resources/"
+                resource_id = str(row['resource_id'])
+                delete = aspace.client.delete(uri + resource_id)
+                print("deleted resource "+ resource_id)
             except:
                 pass
-
 
 def delete_agents_person(data):
     with open(data, newline='') as data:
