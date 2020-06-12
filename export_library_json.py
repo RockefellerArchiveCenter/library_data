@@ -27,17 +27,17 @@ def save_data(object_type, object):
 for object_type in ['resources']:
     for object in getattr(aspace, object_type):
         if not (object.jsonmodel_type == 'resource' and object.id_0.startswith(("FA", "AC.", "AC", "2"))):
-            ##print(object_type, object)
+            #print(object_type, object)
             save_data(object_type, object)
             ###get associated subject JSON
             for subject in object.subjects:
-                aspace.get().json()
-                object_type == object.jsonmodel_type
-                ##print(object.json())
+                #print(subject.json())
                 save_data(object_type, subject)
             ##get associated agent JSON
             for agent in object.linked_agents:
-                aspace.get().json()
-                object_type == object.jsonmodel_type
-                ##print(object.json())
+                #print(agent.json())
                 save_data(object_type, agent)
+            ##get associated container JSON
+            for instance in object.instances:
+                top_container = instance.sub_container.top_container.reify()
+                save_data(object_type, top_container)
