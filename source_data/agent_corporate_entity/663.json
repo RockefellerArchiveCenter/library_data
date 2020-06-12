@@ -1,10 +1,10 @@
 {
-  "lock_version": 12,
+  "lock_version": 13,
   "publish": true,
   "created_by": "admin",
   "last_modified_by": "admin",
   "create_time": "2014-12-06T02:45:23Z",
-  "system_mtime": "2020-02-26T22:15:18Z",
+  "system_mtime": "2020-06-02T16:37:22Z",
   "user_mtime": "2014-12-06T02:45:23Z",
   "is_slug_auto": false,
   "jsonmodel_type": "agent_corporate_entity",

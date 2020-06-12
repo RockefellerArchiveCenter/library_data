@@ -1,10 +1,10 @@
 {
-  "lock_version": 1097,
+  "lock_version": 1100,
   "publish": true,
   "created_by": "battalb",
   "last_modified_by": "battalb",
   "create_time": "2015-01-14T19:15:12Z",
-  "system_mtime": "2020-06-01T16:23:48Z",
+  "system_mtime": "2020-06-09T13:36:05Z",
   "user_mtime": "2015-01-14T19:15:12Z",
   "is_slug_auto": false,
   "jsonmodel_type": "agent_corporate_entity",

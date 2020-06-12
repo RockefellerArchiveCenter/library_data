@@ -1,10 +1,10 @@
 {
-  "lock_version": 48,
+  "lock_version": 55,
   "publish": true,
   "created_by": "pgalligan",
   "last_modified_by": "pgalligan",
   "create_time": "2016-01-05T19:17:35Z",
-  "system_mtime": "2020-05-28T18:23:04Z",
+  "system_mtime": "2020-06-03T14:08:50Z",
   "user_mtime": "2016-01-05T19:17:35Z",
   "is_slug_auto": false,
   "jsonmodel_type": "agent_person",

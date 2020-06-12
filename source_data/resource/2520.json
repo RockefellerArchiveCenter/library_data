@@ -1,15 +1,15 @@
 {
-  "lock_version": 0,
+  "lock_version": 1,
   "title": "American folklore films and videotapes: a catalog.",
   "publish": true,
   "restrictions": false,
   "finding_aid_title": "\n",
   "finding_aid_language": "English",
   "created_by": "admin",
-  "last_modified_by": "admin",
+  "last_modified_by": "quinnm",
   "create_time": "2014-12-06T16:23:35Z",
-  "system_mtime": "2019-10-30T13:54:43Z",
-  "user_mtime": "2014-12-06T16:23:35Z",
+  "system_mtime": "2020-06-02T18:21:56Z",
+  "user_mtime": "2020-06-02T18:21:56Z",
   "suppressed": false,
   "is_slug_auto": false,
   "id_0": "LI01436",
@@ -21,11 +21,11 @@
     {
       "external_id": "10542",
       "source": "Archivists Toolkit Database::RESOURCE",
-      "created_by": "admin",
-      "last_modified_by": "admin",
-      "create_time": "2014-12-06T16:23:35Z",
-      "system_mtime": "2014-12-06T16:23:35Z",
-      "user_mtime": "2014-12-06T16:23:35Z",
+      "created_by": "quinnm",
+      "last_modified_by": "quinnm",
+      "create_time": "2020-06-02T18:21:56Z",
+      "system_mtime": "2020-06-02T18:21:56Z",
+      "user_mtime": "2020-06-02T18:21:56Z",
       "jsonmodel_type": "external_id"
     }
   ],
@@ -39,11 +39,11 @@
     {
       "lock_version": 0,
       "number": "1",
-      "created_by": "admin",
-      "last_modified_by": "admin",
-      "create_time": "2014-12-06T16:23:35Z",
-      "system_mtime": "2015-07-15T13:55:04Z",
-      "user_mtime": "2014-12-06T16:23:35Z",
+      "created_by": "quinnm",
+      "last_modified_by": "quinnm",
+      "create_time": "2020-06-02T18:21:56Z",
+      "system_mtime": "2020-06-02T18:21:56Z",
+      "user_mtime": "2020-06-02T18:21:56Z",
       "portion": "whole",
       "extent_type": "Bound Volumes",
       "jsonmodel_type": "extent"
@@ -53,13 +53,17 @@
     {
       "lock_version": 0,
       "expression": "1982",
-      "created_by": "admin",
-      "last_modified_by": "admin",
-      "create_time": "2014-12-06T16:23:35Z",
-      "system_mtime": "2014-12-06T16:23:35Z",
-      "user_mtime": "2014-12-06T16:23:35Z",
+      "begin": "1982",
+      "end": "1982",
+      "created_by": "quinnm",
+      "last_modified_by": "quinnm",
+      "create_time": "2020-06-02T18:21:56Z",
+      "system_mtime": "2020-06-02T18:21:56Z",
+      "user_mtime": "2020-06-02T18:21:56Z",
       "date_type": "single",
       "label": "creation",
+      "era": "ce",
+      "calendar": "gregorian",
       "jsonmodel_type": "date"
     }
   ],
@@ -83,21 +87,21 @@
   "instances": [
     {
       "lock_version": 0,
-      "created_by": "admin",
-      "last_modified_by": "admin",
-      "create_time": "2014-12-06T16:23:35Z",
-      "system_mtime": "2015-09-23T18:26:46Z",
-      "user_mtime": "2014-12-06T16:23:35Z",
+      "created_by": "quinnm",
+      "last_modified_by": "quinnm",
+      "create_time": "2020-06-02T18:21:56Z",
+      "system_mtime": "2020-06-02T18:21:56Z",
+      "user_mtime": "2020-06-02T18:21:56Z",
       "instance_type": "bound volume",
       "jsonmodel_type": "instance",
       "is_representative": false,
       "sub_container": {
         "lock_version": 0,
-        "created_by": "admin",
-        "last_modified_by": "admin",
-        "create_time": "2016-08-13T09:27:42Z",
-        "system_mtime": "2016-08-13T09:27:42Z",
-        "user_mtime": "2016-08-13T09:27:42Z",
+        "created_by": "quinnm",
+        "last_modified_by": "quinnm",
+        "create_time": "2020-06-02T18:21:56Z",
+        "system_mtime": "2020-06-02T18:21:56Z",
+        "user_mtime": "2020-06-02T18:21:56Z",
         "jsonmodel_type": "sub_container",
         "top_container": {
           "ref": "/repositories/2/top_containers/137097"
@@ -110,65 +114,65 @@
   "classifications": [],
   "notes": [
     {
+      "jsonmodel_type": "note_singlepart",
+      "persistent_id": "c01b9c80c7c25a7a12bcc56ae8273351",
+      "label": "General Physical Description note",
+      "type": "physdesc",
       "content": [
         "xii, 355 p. : ill."
       ],
-      "jsonmodel_type": "note_singlepart",
-      "label": "General Physical Description note",
-      "type": "physdesc",
-      "persistent_id": "c01b9c80c7c25a7a12bcc56ae8273351",
       "publish": true
     },
     {
       "jsonmodel_type": "note_multipart",
-      "label": "ISBN/ISSN Number",
-      "subnotes": [
-        {
-          "content": "0-8352-1536-9\n\n",
-          "jsonmodel_type": "note_text",
-          "publish": true
-        }
-      ],
-      "type": "fileplan",
       "persistent_id": "8bc488586718e2e6b85bf25d8380d7c6",
-      "publish": true
-    },
-    {
-      "jsonmodel_type": "note_multipart",
-      "label": "LC Number",
-      "subnotes": [
-        {
-          "content": "82-9673\n\n",
-          "jsonmodel_type": "note_text",
-          "publish": true
-        }
-      ],
+      "label": "ISBN/ISSN Number",
       "type": "fileplan",
-      "persistent_id": "cb5eb9f640cea8543ec8780b9135b028",
+      "subnotes": [
+        {
+          "jsonmodel_type": "note_text",
+          "content": "0-8352-1536-9\n\n",
+          "publish": true
+        }
+      ],
       "publish": true
     },
     {
       "jsonmodel_type": "note_multipart",
-      "label": "Related Archival Materials note",
+      "persistent_id": "cb5eb9f640cea8543ec8780b9135b028",
+      "label": "LC Number",
+      "type": "fileplan",
       "subnotes": [
         {
-          "content": "RF 200 R Center for Sother Folklore--Multimedia R1859\n\n",
           "jsonmodel_type": "note_text",
+          "content": "82-9673\n\n",
           "publish": true
         }
       ],
-      "type": "relatedmaterial",
-      "persistent_id": "74ca432071b94346321a7151e63755af",
       "publish": true
     },
     {
+      "jsonmodel_type": "note_multipart",
+      "persistent_id": "74ca432071b94346321a7151e63755af",
+      "label": "Related Archival Materials note",
+      "type": "relatedmaterial",
+      "subnotes": [
+        {
+          "jsonmodel_type": "note_text",
+          "content": "RF 200 R Center for Southern Folklore--Multimedia R1859\n\n",
+          "publish": true
+        }
+      ],
+      "publish": true
+    },
+    {
+      "jsonmodel_type": "note_bibliography",
+      "persistent_id": "da245d63a81a2ffa752aca915b5cebcb",
+      "label": "Publication Note",
       "content": [
         "New York : R. R. Bowker, 1982"
       ],
       "items": [],
-      "jsonmodel_type": "note_bibliography",
-      "label": "Publication Note",
-      "persistent_id": "da245d63a81a2ffa752aca915b5cebcb",
       "publish": true
     }
   ],
