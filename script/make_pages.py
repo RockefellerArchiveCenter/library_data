@@ -16,11 +16,11 @@ def make_pages():
     if not PAGE_DIR.is_dir():
         PAGE_DIR.mkdir()
     for f in DATA_DIR.iterdir():
-        with open(f, "r") as df:
+        with f.open() as df:
             data = json.load(df)
             title = clean_string(data["title"])
             obj_id = data["uri"].split("/")[-1]
-        with open(pathlib.PurePath.joinpath(PAGE_DIR, "{}.md".format(obj_id)), "w") as page:
+        with pathlib.PurePath.joinpath(PAGE_DIR, "{}.md".format(obj_id)).open(mode="w") as page:
             page.write("---\nlayout: item\n")
             page.write("title: \"{}\" \n".format(title))
             page.write("id: {}\n".format(obj_id))
