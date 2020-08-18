@@ -4,7 +4,7 @@ import json
 import pathlib
 
 OBJ_PREFIX = "items"
-DATA_DIR = pathlib.Path(pathlib.Path(__file__).resolve().parents[1], "sample_data", "resource")
+DATA_DIR = pathlib.Path(pathlib.Path(__file__).resolve().parents[1], "_data", "resource")
 PAGE_DIR = pathlib.Path(pathlib.Path(__file__).resolve().parents[1], OBJ_PREFIX)
 
 
