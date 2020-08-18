@@ -20,7 +20,7 @@ def make_pages():
             data = json.load(df)
             title = clean_string(data["title"])
             obj_id = data["uri"].split("/")[-1]
-        with pathlib.PurePath.joinpath(PAGE_DIR, "{}.md".format(obj_id)).open(mode="w") as page:
+        with (PAGE_DIR / "{}.md".format(obj_id)).open(mode="w") as page:
             page.write("---\nlayout: item\n")
             page.write("title: \"{}\" \n".format(title))
             page.write("id: {}\n".format(obj_id))
