@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
-python make_pages.py
+python script/make_pages.py
 
-bundle exec jekyll build --source=".." --destination="../_site"
-bundle exec htmlproofer ../_site
+bundle exec jekyll build
+bundle exec htmlproofer ./_site
