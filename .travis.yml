@@ -2,7 +2,9 @@ language: ruby
 rvm:
   - 2.6.3
 
-before_script: pip install pathlib
+before_script:
+  - which python
+  - pip install pathlib
 
 # Assume bundler is being used, therefore
 # the `install` step will run `bundle install` by default.
