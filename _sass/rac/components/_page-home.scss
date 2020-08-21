@@ -1,0 +1,9 @@
+@import "../styles";
+
+
+
+.search--home {
+  @include grid-column(12);
+  display: flex;
+  justify-content: center;
+}
