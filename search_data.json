@@ -14,21 +14,24 @@ layout: null
       {%- assign subjects = subjects | push: obj.title -%}
     {%- endfor -%}
 
-    {% case {{note.jsonmodel_type}} %}
-    {% when 'note_multipart' %}
-      {% for subnote in note.subnotes %}
-        {% if subnote.jsonmodel_type == 'note_text' %}
-          {{ subnote.content | markdownify }}
-        {% endif %}
-        {% if subnote.jsonmodel_type == 'note_chronology' %}
-          {% for item in subnote.items %}
-            {{item.event_date}}{% for event in item.events %}{{event}}{% endfor %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-    {% when 'note_singlepart' %}
-      {{ note.content }}
-    {% endcase %}
+    {%- for note in object.notes -%}
+      {%- assign label = note.label -%}
+      {% case {{note.jsonmodel_type}} %}
+      {% when 'note_multipart' %}
+        {% for subnote in note.subnotes %}
+          {% if subnote.jsonmodel_type == 'note_text' %}
+            {%- assign content = subnote.content -%}
+          {% endif %}
+          {% if subnote.jsonmodel_type == 'note_chronology' %}
+            {% for item in subnote.items %}
+              {{item.event_date}}{% for event in item.events %}{{event}}{% endfor %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% when 'note_singlepart' %}
+        {{ note.content }}
+      {% endcase %}
+    {%- endfor -%}
 
     {%- assign agents = "" | split: ',' -%}
     {%- for agent in object.linked_agents -%}
