@@ -4,6 +4,11 @@
   {% include head.html %}
   <body>
     {% include header.html %}
+    {% if page.dir != "/" %}
+      <div class="search--bar">
+        {% include search.html %}
+      </div>
+    {% endif %}
     <div class="wrapper">
       <div class="container">
         {{content}}

@@ -1,1 +1,33 @@
+.search--bar {
+  width: 100%;
+  background: $light-gray;
+  text-align: center;
+  padding: 15px 0px;
+}
 
+.search__input {
+  padding: 5px;
+  width: 25%;
+}
+
+.item__title  {
+  @include grid-column(8);
+  @include page-title;
+}
+
+.item__request-btn {
+  @include grid-column(2);
+  text-align: right;
+  margin-top: 30px;
+}
+
+.item-details {
+  @include grid-column(10);
+  @include grid-push(1);
+}
+
+.list--unstyled {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
