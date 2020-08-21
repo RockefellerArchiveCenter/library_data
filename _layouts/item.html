@@ -1,21 +1,34 @@
+---
+layout: default
+---
+
 {% capture object_id %}{{page.id}}{% endcapture %}
 {% assign object = site.data.resource[object_id] %}
 
-<h1>
+{% include search.html %}
+
+<h1 class="item__title">
   {{ object.title }}
+  <small>{{call_number}}</small>
 </h1>
 
-<!-- Demonstrates how to get subject data -->
-<ul>
-{% for subject in object.subjects %}
-  {% capture subject_id %}{{ subject.ref | split: "/" | last }}{% endcapture %}
-  {% assign obj = site.data.subject[subject_id] %}
-  <li>{{obj.title}}</li>
-{% endfor %}
-</ul>
+<button class="btn btn--md btn--gray item__request-btn">Request in Reading Room</button>
+
+<div class="item-details">
+  <h2 class="item-details__title">Item Details</h2>
+  <h3 class="item-details__label">Authors</h3>
+    {% include author_list.html object=object %}
+  <h3 class="item-details__label">Published</h3>
+    {% include date_list.html object=object %}
+  <h3 class="item-details__label">Subject Terms</h3>
+    {% include subject_list.html object=object %}
+  <h3 class="item-details__label">Notes</h3>
+    {% include note_list.html %}
+</div>
+
 
 <!-- Demonstrates how to get top_container data -->
-<ul>
+<!-- <ul>
 {% for instance in object.instances %}
   {%- capture top_container_id -%}
     {{ instance.sub_container.top_container.ref | split: "/" | last }}
@@ -23,17 +36,4 @@
   {% assign obj = site.data.top_container[top_container_id] %}
   <li>{{obj.indicator}}</li>
 {% endfor %}
-</ul>
-
-<!-- Demonstrates how to get agent data, which is a bit more complicated -->
-<ul>
-{% for agent in object.linked_agents %}
-  {% capture agent_id %}{{ agent.ref | split: "/" | last }}{% endcapture %}
-  {% if agent.ref contains "corporate_entities" %}
-    {% assign agent_data = site.data.agent_corporate_entity[agent_id] %}
-  {% elsif agent.ref contains "people" %}
-    {% assign agent_data = site.data.agent_person[agent_id] %}
-  {% endif %}
-  <li>{{ agent_data.title }}</li>
-{% endfor %}
-</ul>
+</ul> -->

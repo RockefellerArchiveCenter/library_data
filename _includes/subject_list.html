@@ -1,0 +1,7 @@
+<ul>
+{% for subject in object.subjects %}
+  {% capture subject_id %}{{ subject.ref | split: "/" | last }}{% endcapture %}
+  {% assign obj = site.data.subject[subject_id] %}
+  <li>{{obj.title}}</li>
+{% endfor %}
+</ul>

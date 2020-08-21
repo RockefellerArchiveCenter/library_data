@@ -1,0 +1,5 @@
+{% assign dates = "" | split: ',' %}
+{% for date in object.dates %}
+  {% assign dates = dates | push: date.expression %}
+{% endfor %}
+{{ dates | join: ", " }}
