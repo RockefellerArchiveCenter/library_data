@@ -12,11 +12,12 @@ layout: null
       {%- capture agent_id -%}{{ agent.ref | split: '/' | last }}{%- endcapture -%}
       {%- if agent.ref contains "corporate_entities" -%}
         {%- assign agent_data = site.data.agent_corporate_entity[agent_id] -%}
-        {%- assign agents = agents | push: agent_data.title -%}
       {%- elsif agent.ref contains "people" -%}
         {%- assign agent_data = site.data.agent_person[agent_id] -%}
-        {%- assign agents = agents | push: agent_data.title -%}
+      {%- elsif agent.ref contains "family" -%}
+        {%- assign agent_data = site.data.agent_family[agent_id] -%}
       {%- endif -%}
+      {%- assign agents = agents | push: agent_data.title -%}
     {%- endfor -%}
 
     {%- assign subjects = "" | split: ',' -%}
@@ -28,38 +29,18 @@ layout: null
 
     {%- assign notes = "" | split: ',' -%}
     {%- for note in object.notes -%}
-      {%- assign label = note.label -%}
-      {% case {{note.jsonmodel_type}} %}
-      {% when 'note_multipart' %}
-        {% for subnote in note.subnotes %}
-          {% if subnote.jsonmodel_type == 'note_text' %}
-            {%- assign content = subnote.content -%}
-          {% endif %}
-        {% endfor %}
-      {% when 'note_singlepart' %}
-        {%- assign content = note.content -%}
-      {% endcase %}
-      {%- capture combined_note -%}{{ label }}:{{ content }}{%- endcapture -%}
-      {%- assign notes = notes | push: combined_note -%}
+      {%- include note_content.html -%}
     {%- endfor -%}
 
-    {%- assign call_numbers = "" | split: ',' -%}
-    {% for instance in object.instances %}
-      {%- capture top_container_id -%}
-        {{ instance.sub_container.top_container.ref | split: '/' | last }}
-      {%- endcapture -%}
-      {%- assign obj = site.data.top_container[top_container_id] -%}
-      {%- assign call_numbers = call_numbers | push: obj.indicator -%}
-    {%- endfor -%}
+    {%- include call_numbers.html -%}
 
     "resource/{{id}}": {
-      "href": "resource/{{id}}",
       "title": "{{object.title | escape | strip_newlines | remove: '\'}}",
       "url": "{{site.url}}/resource/{{id}}",
-      "agents": "{{ agents | join: ' | ' }}",
-      "subjects": "{{ subjects | join: ' | ' }}",
+      "agents": "{{ agents | join: ', ' }}",
+      "subjects": "{{ subjects | join: ', ' }}",
       "notes": "{{ notes | join: ', '}}",
-      "call_numbers": "{{ call_numbers | uniq | join ' | '}}"
+      "call_numbers": "{{ call_numbers | uniq | join: ', ' }}"
     }{%- unless forloop.last -%},{%- endunless -%}
   {%- endfor -%}
 }
