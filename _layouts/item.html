@@ -6,35 +6,34 @@ layout: default
 {% assign object = site.data.resource[object_id] %}
 
 
-<div class="wrapper">
-  <h1 class="item__title page__title">
-  {{ object.title }}
-  </h1>
-  <div class="item__request-btn">
+<div class="wrapper item__header">
+  <div class="item__header-left">
+    <h1 class="page__title item__title">
+      {{ object.title }}
+    </h1>
+    <p class="item__callnumber">{% include call_numbers.html object=object %}</p>
+  </div>
+  <div class="item__header-right">
     <button class="btn btn--md btn--gray">Request in Reading Room</button>
   </div>
+
 </div>
 
 <div class="item-details">
-  <h2 class="item-details__title">Item Details</h2>
-  <h3 class="item-details__label">Authors</h3>
-    {% include author_list.html object=object %}
-  <h3 class="item-details__label">Published</h3>
-    {% include date_list.html object=object %}
-  <h3 class="item-details__label">Subject Terms</h3>
-    {% include subject_list.html object=object %}
-  <h3 class="item-details__label">Notes</h3>
+  <div class="wrapper">
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Authors</h2>
+      {% include author_list.html object=object %}
+    </div>
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Subject Terms</h2>
+      {% include subject_list.html object=object %}
+    </div>
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Published</h2>
+      {% include date_list.html object=object %}
+    </div>
+  </div>
+  <h2 class="item-details__label">Notes</h2>
     {% include note_list.html %}
 </div>
-
-
-<!-- Demonstrates how to get top_container data -->
-<!-- <ul>
-{% for instance in object.instances %}
-  {%- capture top_container_id -%}
-    {{ instance.sub_container.top_container.ref | split: "/" | last }}
-  {%- endcapture -%}
-  {% assign obj = site.data.top_container[top_container_id] %}
-  <li>{{obj.indicator}}</li>
-{% endfor %}
-</ul> -->

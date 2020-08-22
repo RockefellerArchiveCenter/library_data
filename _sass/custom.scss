@@ -1,21 +1,36 @@
 .search--bar {
   width: 100%;
-  background: $light-gray;
-  text-align: center;
+  background: $neutral-sand;
+  justify-content: center;
   padding: 15px 0px;
 }
 
-.search__input {
-  padding: 5px;
-  width: 25%;
+.search--interior {
+  @include grid-column(12);
+  float: left;
+  display: flex;
+  justify-content: center;
+  & .input-group__search {
+    width: 50%;
+    margin: 0;
+  }
+}
+
+.item__header-left  {
+  @include grid-column(8);
 }
 
 .item__title  {
-  @include grid-column(8);
   @include page-title;
+  margin-bottom: 10px;
 }
 
-.item__request-btn {
+.item__callnumber {
+  font-family: $sans-serif-stack;
+  font-size: 18px;
+}
+
+.item__header-right {
   @include grid-column(2);
   text-align: right;
   margin-top: 30px;
@@ -24,6 +39,27 @@
 .item-details {
   @include grid-column(10);
   @include grid-push(1);
+  padding-bottom: 80px;
+}
+
+.item-details__label {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+// overrides very specific rule
+h2:not(:first-child) {
+    margin-top: 30px;
+}
+
+.item__attribute {
+  &:first-child {
+    margin-left: 0;
+  }
+  &:not(:last-child) {
+    border-right: 1px solid $neutral-sand;
+  }
 }
 
 .list--unstyled {
