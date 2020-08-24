@@ -1,3 +1,9 @@
+.not-found {
+  margin-top: 100px;
+  margin-bottom: 200px;
+  text-align: center;
+}
+
 .search--bar {
   width: 100%;
   background: $neutral-sand;
@@ -40,6 +46,7 @@
   @include grid-column(10);
   @include grid-push(1);
   padding-bottom: 80px;
+  margin-top: 40px;
 }
 
 .item-details__label {
