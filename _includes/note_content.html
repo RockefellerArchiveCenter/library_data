@@ -2,11 +2,10 @@
 {%- when 'note_multipart' -%}
   {%- for subnote in note.subnotes -%}
     {%- if subnote.jsonmodel_type == 'note_text' -%}
-      {%- assign content = subnote.content | strip_html | strip_newlines | escape -%}
-      {%- assign notes = notes | push: content -%}
+      {%- assign content = subnote.content -%}
     {%- endif -%}
   {%- endfor -%}
 {%- when 'note_singlepart' -%}
-  {%- assign content = note.content | strip_html | strip_newlines | escape -%}
-  {%- assign notes = notes | push: content -%}
+  {%- assign content = note.content -%}
 {%- endcase -%}
+{{ content }}

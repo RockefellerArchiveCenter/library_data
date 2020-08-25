@@ -6,3 +6,4 @@
   {%- assign obj = site.data.top_container[top_container_id] -%}
   {%- assign call_numbers = call_numbers | push: obj.indicator -%}
 {%- endfor -%}
+{{call_numbers | uniq | join: ", "}}

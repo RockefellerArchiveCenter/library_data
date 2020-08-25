@@ -1,39 +1,39 @@
+---
+layout: default
+---
+
 {% capture object_id %}{{page.id}}{% endcapture %}
 {% assign object = site.data.resource[object_id] %}
 
-<h1>
-  {{ object.title }}
-</h1>
 
-<!-- Demonstrates how to get subject data -->
-<ul>
-{% for subject in object.subjects %}
-  {% capture subject_id %}{{ subject.ref | split: "/" | last }}{% endcapture %}
-  {% assign obj = site.data.subject[subject_id] %}
-  <li>{{obj.title}}</li>
-{% endfor %}
-</ul>
+<div class="wrapper item__header">
+  <div class="item__header-left">
+    <h1 class="page__title item__title">
+      {{ object.title }}
+    </h1>
+    <p class="item__callnumber">{% include call_numbers.html object=object %}</p>
+  </div>
+  <div class="item__header-right">
+    <button class="btn btn--md btn--gray">Request in Reading Room</button>
+  </div>
 
-<!-- Demonstrates how to get top_container data -->
-<ul>
-{% for instance in object.instances %}
-  {%- capture top_container_id -%}
-    {{ instance.sub_container.top_container.ref | split: "/" | last }}
-  {%- endcapture -%}
-  {% assign obj = site.data.top_container[top_container_id] %}
-  <li>{{obj.indicator}}</li>
-{% endfor %}
-</ul>
+</div>
 
-<!-- Demonstrates how to get agent data, which is a bit more complicated -->
-<ul>
-{% for agent in object.linked_agents %}
-  {% capture agent_id %}{{ agent.ref | split: "/" | last }}{% endcapture %}
-  {% if agent.ref contains "corporate_entities" %}
-    {% assign agent_data = site.data.agent_corporate_entity[agent_id] %}
-  {% elsif agent.ref contains "people" %}
-    {% assign agent_data = site.data.agent_person[agent_id] %}
-  {% endif %}
-  <li>{{ agent_data.title }}</li>
-{% endfor %}
-</ul>
+<div class="item-details">
+  <div class="wrapper">
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Authors</h2>
+      {% include author_list.html object=object %}
+    </div>
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Subject Terms</h2>
+      {% include subject_list.html object=object %}
+    </div>
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Published</h2>
+      {% include date_list.html object=object %}
+    </div>
+  </div>
+  <h2 class="item-details__label">Notes</h2>
+    {% include note_list.html %}
+</div>
