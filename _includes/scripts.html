@@ -1,66 +1,11 @@
 <!--JQuery-->
 <script type="text/javascript" src="{{ site.baseurl }}/js/jquery-3.2.1.js"></script>
 
-<!--Popper-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-
-<!-- Bootstrap -->
-<script type="text/javascript" src="{{ site.baseurl }}/js/bootstrap/bootstrap.min.js"></script>
-
-<!--SideNav-->
-<script type="text/javascript" src="{{ site.baseurl }}/js/toc.js"></script>
+<!--Micromodal-->
+<script type="text/javascript" src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#current').toc({classes: { list: 'list-group',item: 'list-group-item'}});
-});
-</script>
-
-<!-- use Bootstrap table formatting for Markdown tables-->
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    $("table").addClass("table table-striped table-bordered");
-  });
-</script>
-
-<!-- list.js for homepage search/filter -->
-<script type="text/javascript" src="{{ site.baseurl }}/js/list.js"></script>
-
-<!-- code for filters-->
-<script type="text/javascript">
-var options = {
-  valueNames: [ 'category', 'card-title', 'card-text', 'sort-title']
-};
-var documentsList = new List ('docs-list', options);
-
-if (documentsList.items.length) {
-  documentsList.sort('sort-title', { order: "asc" });
-}
-
-$('#filter-none').on('click', function() {
-  $('.filter-button').each(function() {
-    $(this).removeClass('active')
-  });
-  $(this).addClass('sr-only')
-  documentsList.filter();
-  return false;
-});
-
-$('.filter-button').on('click', function() {
-  $('.filter-button').each(function() {
-    $(this).removeClass('active')
-  });
-  $(this).addClass('active')
-  $('#filter-none').removeClass('sr-only')
-  var category = $(this).data('category')
-  documentsList.filter(function(item) {
-    if (item.values().category.includes(category)) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-});
-
+  $(document).ready(function(){
+    MicroModal.init();
+  })
 </script>

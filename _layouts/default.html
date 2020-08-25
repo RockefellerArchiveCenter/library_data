@@ -4,12 +4,15 @@
   {% include head.html %}
   <body>
     {% include header.html %}
+    {% include scripts.html %}
     {% if page.dir != "/" %}
       <div class="wrapper">
         <div class="search--bar">
           {% include search.html class="search--interior" %}
         </div>
       </div>
+      {% capture object_id %}{{page.id}}{% endcapture %}
+      {% assign object = site.data.resource[object_id] %}
     {% endif %}
     <div class="wrapper">
       <div class="container">
@@ -17,6 +20,6 @@
       </div>
     </div>
     {% include footer.html %}
-    {% include scripts.html %}
+    {% include request_modal.html %}
   </body>
 </html>
