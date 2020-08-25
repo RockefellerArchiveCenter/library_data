@@ -74,3 +74,35 @@ h2:not(:first-child) {
   padding-left: 0;
   margin-top: 0;
 }
+
+.modal-overlay {
+  display: none;
+  &.is-open {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+.modal-overlay__close {
+  height: 100%;
+  width: 100%;
+}
+
+.modal-content {
+  width: 50%;
+  min-height: 50%;
+  background: #FFFFFF;
+  position: relative;
+  top: 25%;
+  left: 25%;
+}
+
+.modal-body {
+  padding: 0 25px 25px 25px;
+  box-sizing: border-box;
+}
