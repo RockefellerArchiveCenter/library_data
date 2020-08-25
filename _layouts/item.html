@@ -25,7 +25,12 @@ layout: default
   <div class="wrapper">
     <div class="container item__attribute">
       <h2 class="item-details__label">Authors</h2>
-      {% include author_list.html object=object %}
+      {% capture author_list %}{% include author_list.html %}{% endcapture %}
+      <ul class="list--unstyled">
+      {% for author in author_list %}
+        <li>{{author}}</li>
+      {% endfor %}
+      </ul>
     </div>
     <div class="container item__attribute">
       <h2 class="item-details__label">Subject Terms</h2>
