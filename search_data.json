@@ -9,15 +9,8 @@ layout: null
 
     {%- assign agents = "" | split: ',' -%}
     {%- for agent in object.linked_agents -%}
-      {%- capture agent_id -%}{{ agent.ref | split: '/' | last }}{%- endcapture -%}
-      {%- if agent.ref contains "corporate_entities" -%}
-        {%- assign agent_data = site.data.agent_corporate_entity[agent_id] -%}
-      {%- elsif agent.ref contains "people" -%}
-        {%- assign agent_data = site.data.agent_person[agent_id] -%}
-      {%- elsif agent.ref contains "family" -%}
-        {%- assign agent_data = site.data.agent_family[agent_id] -%}
-      {%- endif -%}
-      {%- assign agents = agents | push: agent_data.title -%}
+      {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
+      {%- assign agents = agents | push: agent_title -%}
     {%- endfor -%}
 
     {%- assign subjects = "" | split: ',' -%}
@@ -35,7 +28,7 @@ layout: null
 
     {%- capture call_numbers -%}{%- include call_numbers.html -%}{%- endcapture -%}
 
-  "{{id}}": {
+  "/items/{{id}}/": {
       "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
       "url": "{{site.url}}/item/{{id}}",
       "agents": "{{ agents | join: ', ' }}",
