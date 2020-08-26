@@ -5,7 +5,7 @@ var data;
 buildIndex();
 
 function buildIndex() {
-  fs.readFile('build/site/search_data.json', 'utf8', function(err, data) {
+  fs.readFile('_site/search_data.json', 'utf8', function(err, data) {
       if (err) throw err;
       documents = JSON.parse(data);
 
@@ -22,7 +22,7 @@ function buildIndex() {
           }
       })
 
-      fs.writeFile('build/site/search_index.json', JSON.stringify(idx), (err) => {
+      fs.writeFile('_site/search_index.json', JSON.stringify(idx), (err) => {
           if (err) throw err;
           console.log('New index file created.');
       });
