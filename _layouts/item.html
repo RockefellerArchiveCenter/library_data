@@ -26,6 +26,7 @@ layout: default
     <div class="container item__attribute">
       <h2 class="item-details__label">Authors</h2>
       {% capture author_list %}{% include author_list.html %}{% endcapture %}
+      {%- assign author_list = author_list | split: '<' -%}
       <ul class="list--unstyled">
       {% for author in author_list %}
         <li>{{author}}</li>
