@@ -1,0 +1,7 @@
+{%- capture agent_id -%}{{ agent.ref | split: "/" | last }}{%- endcapture -%}
+{%- if agent.ref contains "corporate_entities" -%}
+  {%- assign agent_data = site.data.agent_corporate_entity[agent_id] -%}
+{%- elsif agent.ref contains "people" -%}
+  {%- assign agent_data = site.data.agent_person[agent_id] -%}
+{%- endif -%}
+{{- agent_data.title -}}
