@@ -7,12 +7,6 @@ layout: null
     {%- assign id = item_hash[0] -%}
     {%- assign collection_id = object.uri | split:'/' | last -%}
 
-    {%- assign agents = "" | split: ',' -%}
-    {%- for agent in object.linked_agents -%}
-      {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
-      {%- assign agents = agents | push: agent_title -%}
-    {%- endfor -%}
-
     {%- assign subjects = "" | split: ',' -%}
     {%- for subject in object.subjects -%}
       {%- capture subject_id -%}{{ subject.ref | split: '/' | last }}{%- endcapture -%}
@@ -31,7 +25,7 @@ layout: null
   "/items/{{id}}/": {
       "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
       "url": "{{site.url}}/item/{{id}}",
-      "agents": "{{ agents | join: ', ' }}",
+      "agents": "{%- include author_list.html -%}",
       "subjects": "{{ subjects | join: ', ' }}",
       "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | escape -}}",
       "call_numbers": "{{ call_numbers | uniq | join: ', ' }}"}{%- unless forloop.last -%},
