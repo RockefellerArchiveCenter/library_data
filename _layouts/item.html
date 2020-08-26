@@ -25,10 +25,9 @@ layout: default
   <div class="wrapper">
     <div class="container item__attribute">
       <h2 class="item-details__label">Authors</h2>
-      {% capture author_list %}{% include author_list.html %}{% endcapture %}
       <ul class="list--unstyled">
-      {% for author in author_list %}
-        <li>{{author}}</li>
+      {% for agent in object.linked_agents %}
+        <li>{%- include linked_agent_title.html agent=agent -%}</li>
       {% endfor %}
       </ul>
     </div>

@@ -3,4 +3,4 @@
   {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
   {%- assign authors = authors | push: agent_title -%}
 {%- endfor -%}
-{{- authors -}}
+{{- authors | join: ', '-}}
