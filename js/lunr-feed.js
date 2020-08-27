@@ -15,7 +15,12 @@ $(document).ready(function() {
         $('#results').append(appendString);
       });
     }
-    $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span> in ${searchType}</p>`).fadeIn(200);
+    if (searchType.length) {
+      $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span> in ${searchType}</p>`).fadeIn(200);
+    }
+    else {
+      $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span></p>`).fadeIn(200);
+    }
   }
 
   function getQueryVariable(variable) {
