@@ -37,6 +37,15 @@ $(document).ready(function() {
 
   let searchTerm = getQueryVariable('query');
   let searchType = getQueryVariable('type');
+  if (searchType === "author") {
+    var searchField = "agents";
+  } else if (searchType === "subject") {
+    var searchField = "subjects";
+  } else if (searchType === "title") {
+    var searchField = searchType;
+  } else {
+    var searchField = "";
+  }
 
   if (searchTerm) {
     $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')
@@ -45,7 +54,11 @@ $(document).ready(function() {
     $.getJSON("search_index.json", function(data){
       let index = lunr.Index.load(data)
 
-      let results = index.search(searchTerm); // Get lunr to perform a search
+      if (searchField.length){
+        var results = index.search(`${searchField}:${searchTerm}`); // Get lunr to perform a search
+      } else {
+        var results = index.search(searchTerm);
+      }
       displaySearchResults(results, searchTerm);
 
     });
