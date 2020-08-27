@@ -5,3 +5,5 @@ python script/make_pages.py
 
 bundle exec jekyll build
 bundle exec htmlproofer ./_site
+
+node js/create-index.js
