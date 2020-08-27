@@ -10,7 +10,8 @@ function buildIndex() {
       documents = JSON.parse(data);
 
       var idx = lunr(function() {
-          this.ref('url')
+          this.ref('ref')
+          this.field('url')
           this.field('title')
           this.field('agents')
           this.field('subjects')

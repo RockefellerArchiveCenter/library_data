@@ -4,18 +4,18 @@ $(document).ready(function() {
     $('#results').empty().hide();
     if (results.length) { // Are there any results?
       // return unordered list instead of table
-      var appendString = '<ul>'
+      var appendString = '<ul class="list--unstyled">'
 
       $.getJSON("search_data.json", function(documents){
         for (r in results) {  // Iterate over the results
           let item = documents[results[r].ref];
-          appendString += '<li><p>'+results[r].ref+'</p></li>';
+          appendString += `<li><p class="lead mb-1"><a href="${item.url}">${item.title}</a><small>${item.call_numbers}</small><p><small>${item.agents}</small></p></li>`;
         }
         appendString += '</ul>'
         $('#results').append(appendString);
       });
     }
-    $('#results').prepend('<p><span class="badge badge-secondary">'+results.length+'</span> result(s) for <span class="badge badge-secondary">'+query+'</span></p>').fadeIn(200);
+    $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span></p>`).fadeIn(200);
   }
 
   function getQueryVariable(variable) {
