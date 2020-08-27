@@ -2,7 +2,7 @@
 set -e # halt script on error
 
 python script/make_pages.py
-npm install /js lunr
+npm ci lunr
 
 bundle exec jekyll build
 bundle exec htmlproofer ./_site
