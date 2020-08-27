@@ -3,12 +3,13 @@ $(document).ready(function() {
   function displaySearchResults(results, query, category) {
     $('#results').empty().hide();
     if (results.length) { // Are there any results?
+      // return unordered list instead of table
       var appendString = '<table class="table table-striped"><tbody>'
 
       $.getJSON("/search_data.json", function(documents){
         for (r in results) {  // Iterate over the results
           let item = documents[results[r].ref];
-          appendString += '<tr><td><p class="lead mb-1"><a href="'+item.url+'" onclick="ga(\'send\', \'event\', \''+category+'\', \'view\', \''+item.title+'\');">'+item.title+'</a> <small>'+item.avnumber+'</small></p><p class="text-muted mb-0">'+item.collection+'</p></td></tr>';
+          appendString += '<tr><td><p class="lead mb-1"><a href="'+item.url+'" >'+item.agents+'</a>'+item.subjects+'</p><p>'+item.notes+'</p><p>'+item.call_numbers+'</td></tr>';
         }
         appendString += '</tbody></table>'
         $('#results').append(appendString);
@@ -31,19 +32,16 @@ $(document).ready(function() {
   }
 
   let searchTerm = getQueryVariable('query');
-  let searchType = $('form').attr('action').substring(1);
 
   if (searchTerm) {
     $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')
     $('#query').attr("value", searchTerm);
 
-    ga('send', 'event', searchType, 'search', searchTerm);
-
-    $.getJSON("/search_index.json", function(data){
+    $.getJSON("search_index.json", function(data){
       let index = lunr.Index.load(data)
 
       let results = index.search(searchTerm); // Get lunr to perform a search
-      displaySearchResults(results, searchTerm, searchType);
+      displaySearchResults(results, searchTerm);
 
     });
 
