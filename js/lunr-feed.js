@@ -3,7 +3,6 @@ $(document).ready(function() {
   function displaySearchResults(results, query, category) {
     $('#results').empty().hide();
     if (results.length) { // Are there any results?
-      // return unordered list instead of table
       var appendString = '<ul class="list--unstyled">'
 
       $.getJSON("search_data.json", function(documents){
@@ -16,7 +15,7 @@ $(document).ready(function() {
       });
     }
     if (searchType.length) {
-      $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span> in ${searchType}</p>`).fadeIn(200);
+      $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span> found in ${searchType}</p>`).fadeIn(200);
     }
     else {
       $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span></p>`).fadeIn(200);
