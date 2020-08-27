@@ -15,7 +15,7 @@ $(document).ready(function() {
         $('#results').append(appendString);
       });
     }
-    $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span></p>`).fadeIn(200);
+    $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span> in ${searchType}</p>`).fadeIn(200);
   }
 
   function getQueryVariable(variable) {
@@ -32,6 +32,7 @@ $(document).ready(function() {
   }
 
   let searchTerm = getQueryVariable('query');
+  let searchType = getQueryVariable('type');
 
   if (searchTerm) {
     $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')
