@@ -24,7 +24,7 @@ layout: null
 
   "/items/{{id}}/": {
       "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
-      "url": "{{site.url}}/item/{{id}}",
+      "url": "{{site.url}}/items/{{id}}",
       "agents": "{%- include author_list.html -%}",
       "subjects": "{{ subjects | join: ', ' }}",
       "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | escape -}}",

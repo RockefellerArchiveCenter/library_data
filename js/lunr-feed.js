@@ -4,14 +4,14 @@ $(document).ready(function() {
     $('#results').empty().hide();
     if (results.length) { // Are there any results?
       // return unordered list instead of table
-      var appendString = '<table class="table table-striped"><tbody>'
+      var appendString = '<ul>'
 
-      $.getJSON("/search_data.json", function(documents){
+      $.getJSON("search_data.json", function(documents){
         for (r in results) {  // Iterate over the results
           let item = documents[results[r].ref];
-          appendString += '<tr><td><p class="lead mb-1"><a href="'+item.url+'" >'+item.agents+'</a>'+item.subjects+'</p><p>'+item.notes+'</p><p>'+item.call_numbers+'</td></tr>';
+          appendString += '<li><p>'+results[r].ref+'</p></li>';
         }
-        appendString += '</tbody></table>'
+        appendString += '</ul>'
         $('#results').append(appendString);
       });
     }
