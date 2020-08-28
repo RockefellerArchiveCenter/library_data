@@ -31,10 +31,12 @@ layout: default
       {% endfor %}
       </ul>
     </div>
+    {% if object.subjects.size > 0 %}
     <div class="container item__attribute">
       <h2 class="item-details__label">Subject Terms</h2>
       {% include subject_list.html object=object %}
     </div>
+    {% endif %}
     <div class="container item__attribute">
       <h2 class="item-details__label">Published</h2>
       {% include date_list.html object=object %}
