@@ -24,9 +24,10 @@ layout: null
 
   "/items/{{id}}/": {
       "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
-      "url": "{{site.url}}/item/{{id}}",
-      "agents": "{%- include author_list.html -%}",
-      "subjects": "{{ subjects | join: ', ' }}",
+      "ref": "/items/{{id}}/",
+      "url": "{{site.url}}/items/{{id}}/",
+      "author": "{%- include author_list.html -%}",
+      "subject": "{{ subjects | join: ', ' }}",
       "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | escape -}}",
       "call_numbers": "{{ call_numbers | uniq | join: ', ' }}"}{%- unless forloop.last -%},
   {% endunless %}

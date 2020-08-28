@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 2.6.3
 
+before_install:
+  - npm i lunr
+
 # Assume bundler is being used, therefore
 # the `install` step will run `bundle install` by default.
 script: ./script/cibuild
