@@ -107,10 +107,36 @@ h2:not(:first-child) {
   box-sizing: border-box;
 }
 
-#results {
+.results-wrapper {
   float: left;
   margin: 40px 0px;
   width: 100%;
+}
+
+.results__loading {
+  text-align: center;
+  opacity: 0;
+  height: 0;
+  transition: $transition-default;
+  &.is-loading {
+    opacity: 1;
+    height: 100%;
+    transition: $transition-default;
+  }
+}
+
+.results__list {
+  opacity: 1;
+  transition: $transition-default;
+  &.is-loading {
+    opacity: 0;
+    transition: $transition-default;
+  }
+}
+
+.tile-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tile__authors, .tile__callnumber {

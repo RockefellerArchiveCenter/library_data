@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   function displaySearchResults(results, query) {
     if (results.length) { // Are there any results?
-      var appendString = '<ul class="list--unstyled">'
+      var appendString = '<ul class="tile-list">'
 
       $.getJSON("/search_data.json", function(documents){
         for (r in results) {  // Iterate over the results
@@ -18,14 +18,14 @@ $(document).ready(function() {
             </li>`;
         }
         appendString += '</ul>'
-        $('#results').append(appendString);
+        $(".results__list").append(appendString);
       });
     }
-    $('#results').prepend(`
+    $(".results__list").prepend(`
       <p class="results__summary">
         ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${query}" in ${searchField ? searchField : "all fields"}
       </p>`)
-    $("#results").removeClass("isLoading");
+    $(".results__list", ".results__loading").removeClass("is-loading");
   }
 
   function getQueryVariable(variable) {
@@ -45,8 +45,8 @@ $(document).ready(function() {
   var searchField = getQueryVariable('field');
 
   if (searchTerm) {
-    $('#results').addClass("isLoading")
-    $('#query').attr("value", searchTerm);
+    $(".results__list", ".results__loading").addClass("is-loading")
+    $("#query").attr("value", searchTerm);
     $("#field").val(searchField);
 
     $.getJSON("/search_index.json", function(data){
