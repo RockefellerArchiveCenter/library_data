@@ -67,7 +67,7 @@ $(document).ready(function() {
     $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')
     $('#query').attr("value", searchTerm);
 
-    $.getJSON("search_index.json", function(data){
+    $.getJSON("/search_index.json", function(data){
       let index = lunr.Index.load(data)
 
       if (searchField.length){
