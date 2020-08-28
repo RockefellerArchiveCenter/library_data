@@ -5,7 +5,7 @@ $(document).ready(function() {
     if (results.length) { // Are there any results?
       var appendString = '<ul class="list--unstyled">'
 
-      $.getJSON("search_data.json", function(documents){
+      $.getJSON("/search_data.json", function(documents){
         for (r in results) {  // Iterate over the results
           let item = documents[results[r].ref];
           appendString +=
@@ -23,7 +23,7 @@ $(document).ready(function() {
         $('#results').append(appendString);
       });
     }
-    if (searchType.length) {
+    if (searchField.length) {
       $('#results').prepend(`
         <p>
           <span class="badge badge-secondary">
@@ -31,7 +31,7 @@ $(document).ready(function() {
           </span> result(s) for
           <span class="badge badge-secondary">
             ${query}
-          </span> found in ${searchType}
+          </span> found in ${searchField}
         </p>`).fadeIn(200);
     }
     else {
@@ -61,8 +61,7 @@ $(document).ready(function() {
   }
 
   let searchTerm = getQueryVariable('query');
-  let searchType = getQueryVariable('type');
-  var searchField = searchType;
+  var searchField = getQueryVariable('type');
 
   if (searchTerm) {
     $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')

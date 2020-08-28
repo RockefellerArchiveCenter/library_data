@@ -24,7 +24,7 @@ function buildIndex() {
           }
       })
 
-      fs.writeFile('_site/search_index.json', JSON.stringify(idx), (err) => {
+      fs.writeFile(path.resolve(__dirname, '../_site/search_index.json'), JSON.stringify(idx), (err) => {
           if (err) throw err;
           console.log('New index file created.');
       });
