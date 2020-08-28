@@ -7,6 +7,6 @@ bundle exec jekyll build
 
 node js/create-index.js
 
-if [[ -z "${TRAVIS_CI}" ]]; then
+if [[ "${TRAVIS_CI}" ]]; then
   bundle exec htmlproofer ./_site
 fi
