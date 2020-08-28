@@ -1,3 +1,4 @@
+const path = require("path");
 var lunr = require('lunr')
 var fs = require('fs');
 var data;
@@ -5,7 +6,7 @@ var data;
 buildIndex();
 
 function buildIndex() {
-  fs.readFile('_site/search_data.json', 'utf8', function(err, data) {
+  fs.readFile(path.resolve(__dirname, '../_site/search_data.json'), 'utf8', function(err, data) {
       if (err) throw err;
       documents = JSON.parse(data);
 
