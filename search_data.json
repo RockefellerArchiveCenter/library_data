@@ -26,8 +26,8 @@ layout: null
       "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
       "ref": "/items/{{id}}/",
       "url": "{{site.url}}/items/{{id}}/",
-      "agents": "{%- include author_list.html -%}",
-      "subjects": "{{ subjects | join: ', ' }}",
+      "author": "{%- include author_list.html -%}",
+      "subject": "{{ subjects | join: ', ' }}",
       "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | escape -}}",
       "call_numbers": "{{ call_numbers | uniq | join: ', ' }}"}{%- unless forloop.last -%},
   {% endunless %}

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  function displaySearchResults(results, query, category) {
+  function displaySearchResults(results, query) {
     $('#results').empty().hide();
     if (results.length) { // Are there any results?
       var appendString = '<ul class="list--unstyled">'
@@ -8,17 +8,42 @@ $(document).ready(function() {
       $.getJSON("search_data.json", function(documents){
         for (r in results) {  // Iterate over the results
           let item = documents[results[r].ref];
-          appendString += `<li><p class="lead mb-1"><a href="${item.url}">${item.title}</a><small>${item.call_numbers}</small><p><small>${item.agents}</small></p></li>`;
+          appendString +=
+            `<li>
+              <p class="lead mb-1">
+                <a href="${item.url}">${item.title}</a>
+                <small>${item.call_numbers}</small>
+              </p>
+              <p>
+                <small>${item.author}</small>
+              </p>
+            </li>`;
         }
         appendString += '</ul>'
         $('#results').append(appendString);
       });
     }
     if (searchType.length) {
-      $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span> found in ${searchType}</p>`).fadeIn(200);
+      $('#results').prepend(`
+        <p>
+          <span class="badge badge-secondary">
+            ${results.length}
+          </span> result(s) for
+          <span class="badge badge-secondary">
+            ${query}
+          </span> found in ${searchType}
+        </p>`).fadeIn(200);
     }
     else {
-      $('#results').prepend(`<p><span class="badge badge-secondary">${results.length}</span> result(s) for <span class="badge badge-secondary">${query}</span></p>`).fadeIn(200);
+      $('#results').prepend(`
+        <p>
+          <span class="badge badge-secondary">
+            ${results.length}
+          </span> result(s) for
+          <span class="badge badge-secondary">
+            ${query}
+          </span>
+        </p>`).fadeIn(200);
     }
   }
 
@@ -37,15 +62,7 @@ $(document).ready(function() {
 
   let searchTerm = getQueryVariable('query');
   let searchType = getQueryVariable('type');
-  if (searchType === "author") {
-    var searchField = "agents";
-  } else if (searchType === "subject") {
-    var searchField = "subjects";
-  } else if (searchType === "title") {
-    var searchField = searchType;
-  } else {
-    var searchField = "";
-  }
+  var searchField = searchType;
 
   if (searchTerm) {
     $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')

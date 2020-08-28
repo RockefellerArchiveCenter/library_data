@@ -14,8 +14,8 @@ function buildIndex() {
           this.ref('ref')
           this.field('url')
           this.field('title')
-          this.field('agents')
-          this.field('subjects')
+          this.field('author')
+          this.field('subject')
           this.field('notes')
           this.field('call_numbers')
 
