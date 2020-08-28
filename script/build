@@ -4,6 +4,9 @@ set -e # halt script on error
 python script/make_pages.py
 
 bundle exec jekyll build
-bundle exec htmlproofer ./_site
 
 node js/create-index.js
+
+if [[ -z "${TRAVIS_CI}" ]]; then
+  bundle exec htmlproofer ./_site
+fi
