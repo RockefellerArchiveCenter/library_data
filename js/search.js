@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   function displaySearchResults(results, query) {
-    $('#results').empty().hide();
     if (results.length) { // Are there any results?
       var appendString = '<ul class="list--unstyled">'
 
@@ -9,42 +8,24 @@ $(document).ready(function() {
         for (r in results) {  // Iterate over the results
           let item = documents[results[r].ref];
           appendString +=
-            `<li>
-              <p class="lead mb-1">
-                <a href="${item.url}">${item.title}</a>
-                <small>${item.call_numbers}</small>
-              </p>
-              <p>
-                <small>${item.author}</small>
-              </p>
+            `<li class="tile">
+              <a class="tile__link" href="${item.url}">
+                <p class="tile__title">${item.title}</p>
+                <p class="tile__callnumber">${item.call_numbers}</p>
+                <p class="tile__authors"><strong>Author(s)</strong>: ${item.author}</p>
+                <p class="tile__date"><strong>Published</strong>: ${item.dates}</p>
+              </a>
             </li>`;
         }
         appendString += '</ul>'
         $('#results').append(appendString);
       });
     }
-    if (searchField.length) {
-      $('#results').prepend(`
-        <p>
-          <span class="badge badge-secondary">
-            ${results.length}
-          </span> result(s) for
-          <span class="badge badge-secondary">
-            ${query}
-          </span> found in ${searchField}
-        </p>`).fadeIn(200);
-    }
-    else {
-      $('#results').prepend(`
-        <p>
-          <span class="badge badge-secondary">
-            ${results.length}
-          </span> result(s) for
-          <span class="badge badge-secondary">
-            ${query}
-          </span>
-        </p>`).fadeIn(200);
-    }
+    $('#results').prepend(`
+      <p class="results__summary">
+        ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${query}" in ${searchField ? searchField : "all fields"}
+      </p>`)
+    $("#results").removeClass("isLoading");
   }
 
   function getQueryVariable(variable) {
@@ -61,11 +42,12 @@ $(document).ready(function() {
   }
 
   let searchTerm = getQueryVariable('query');
-  var searchField = getQueryVariable('type');
+  var searchField = getQueryVariable('field');
 
   if (searchTerm) {
-    $('#results').empty().append('<img class="mx-auto d-block" src="/img/loading.gif" />')
+    $('#results').addClass("isLoading")
     $('#query').attr("value", searchTerm);
+    $("#field").val(searchField);
 
     $.getJSON("/search_index.json", function(data){
       let index = lunr.Index.load(data)
