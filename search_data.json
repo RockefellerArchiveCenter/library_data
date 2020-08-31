@@ -20,15 +20,14 @@ layout: null
       {%- assign notes = notes | push: content -%}
     {%- endfor -%}
 
-    {%- capture call_numbers -%}{%- include call_numbers.html -%}{%- endcapture -%}
-
   "/items/{{id}}/": {
       "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
       "ref": "/items/{{id}}/",
       "url": "{{site.url}}/items/{{id}}/",
       "author": "{%- include author_list.html -%}",
-      "subject": "{{ subjects | join: ', ' }}",
+      "subject": "{{- subjects | join: ', ' -}}",
       "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | escape -}}",
-      "call_numbers": "{{ call_numbers | uniq | join: ', ' }}"}{%- unless forloop.last -%},
+      "dates": "{%- include date_list.html -%}",
+      "call_numbers": "{%- include call_numbers.html -%}"}{%- unless forloop.last -%},
   {% endunless %}
 {%- endfor -%} }
