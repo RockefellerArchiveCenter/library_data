@@ -22,9 +22,9 @@ $(document).ready(function() {
       });
     }
     $(".results__list").prepend(`
-      <p class="results__summary">
+      <h1><p class="results__summary">
         ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${query}" in ${searchField ? searchField : "all fields"}
-      </p>`)
+      </p></h1>`)
     $(".results__list", ".results__loading").removeClass("is-loading");
   }
 
