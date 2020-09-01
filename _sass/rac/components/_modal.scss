@@ -1,5 +1,9 @@
 @import "../styles";
 
+.modal__info a{
+  text-decoration: underline;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0px;
