@@ -5,44 +5,42 @@ layout: default
 {% capture object_id %}{{page.id}}{% endcapture %}
 {% assign object = site.data.resource[object_id] %}
 
-<main id="main">
-  <div class="wrapper item__header">
-    <div class="item__header-left">
-      <h1 class="page__title item__title">
-        {{ object.title }}
-      </h1>
-      <p class="item__callnumber">{% include call_numbers.html object=object %}</p>
-    </div>
-    <div class="item__header-right">
-      <button class="btn btn--md btn--gray" data-micromodal-trigger="request_modal">
-        Request in Reading Room
-      </button>
-    </div>
-
+<div class="wrapper item__header">
+  <div class="item__header-left">
+    <h1 class="page__title item__title">
+      {{ object.title }}
+    </h1>
+    <p class="item__callnumber">{% include call_numbers.html object=object %}</p>
+  </div>
+  <div class="item__header-right">
+    <button class="btn btn--md btn--gray" data-micromodal-trigger="request_modal">
+      Request in Reading Room
+    </button>
   </div>
 
-  <div class="item-details">
-    <div class="wrapper">
-      <div class="container item__attribute">
-        <h2 class="item-details__label">Authors</h2>
-        <ul class="list--unstyled">
-        {% for agent in object.linked_agents %}
-          <li>{%- include linked_agent_title.html agent=agent -%}</li>
-        {% endfor %}
-        </ul>
-      </div>
-      {% if object.subjects.size > 0 %}
-      <div class="container item__attribute">
-        <h2 class="item-details__label">Subject Terms</h2>
-        {% include subject_list.html object=object %}
-      </div>
-      {% endif %}
-      <div class="container item__attribute">
-        <h2 class="item-details__label">Published</h2>
-        {% include date_list.html object=object %}
-      </div>
+</div>
+
+<div class="item-details">
+  <div class="wrapper">
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Authors</h2>
+      <ul class="list--unstyled">
+      {% for agent in object.linked_agents %}
+        <li>{%- include linked_agent_title.html agent=agent -%}</li>
+      {% endfor %}
+      </ul>
     </div>
-    <h2 class="item-details__label">Notes</h2>
-      {% include note_list.html %}
+    {% if object.subjects.size > 0 %}
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Subject Terms</h2>
+      {% include subject_list.html object=object %}
+    </div>
+    {% endif %}
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Published</h2>
+      {% include date_list.html object=object %}
+    </div>
   </div>
-</main>
+  <h2 class="item-details__label">Notes</h2>
+    {% include note_list.html %}
+</div>
