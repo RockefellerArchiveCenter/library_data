@@ -5,7 +5,7 @@ layout: default
 {% capture object_id %}{{page.id}}{% endcapture %}
 {% assign object = site.data.resource[object_id] %}
 
-<div role="main">
+<main id="main">
   <div class="wrapper item__header">
     <div class="item__header-left">
       <h1 class="page__title item__title">
@@ -45,4 +45,4 @@ layout: default
     <h2 class="item-details__label">Notes</h2>
       {% include note_list.html %}
   </div>
-</div>
+</main>
