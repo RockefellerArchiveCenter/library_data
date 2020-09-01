@@ -42,6 +42,9 @@
 
 .tile__link  {
   display: block;
+  &:focus {
+    outline: 0;
+  }
   &:hover {
     text-decoration: none;
   }
