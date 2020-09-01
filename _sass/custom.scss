@@ -139,6 +139,12 @@ h2:not(:first-child) {
   flex-wrap: wrap;
 }
 
+.tile__title {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 .tile__authors, .tile__callnumber {
   @extend .tile__date;
   line-height: normal;

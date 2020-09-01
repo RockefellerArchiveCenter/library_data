@@ -10,7 +10,7 @@ $(document).ready(function() {
           appendString +=
             `<li class="tile">
               <a class="tile__link" href="${item.url}">
-                <p class="tile__title">${item.title}</p>
+                <h2 class="tile__title">${item.title}</h2>
                 <p class="tile__callnumber">${item.call_numbers}</p>
                 <p class="tile__authors"><strong>Author(s)</strong>: ${item.author}</p>
                 <p class="tile__date"><strong>Published</strong>: ${item.dates}</p>
