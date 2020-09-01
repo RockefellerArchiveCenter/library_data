@@ -1,4 +1,6 @@
 {% for note in object.notes %}
-  <h3>{{note.label}}</h3>
-  <p>{% include note_content.html %}</p>
+  <div class="container item__note">
+    <h3>{{note.label}}</h3>
+    <p>{% include note_content.html %}</p>
+  </div>
 {% endfor %}

@@ -69,6 +69,18 @@ h2:not(:first-child) {
   }
 }
 
+.wrapper--notes {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.item__note {
+  @include grid-column(6);
+  box-sizing: border-box;
+  margin-left: 0;
+  padding-right: 15px;
+}
+
 .list--unstyled {
   list-style: none;
   padding-left: 0;
