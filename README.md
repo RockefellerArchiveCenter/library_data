@@ -21,7 +21,7 @@ Once you have made item pages for each resource, you should install Node depende
 
 You can use `/script/build` to create item pages in markdown, initially build the `_site` directory, and create a search index. The `make_pages.py` script will check for ArchivesSpace resource record `.json` files in the `_data/resource/` directory. From the project's root directory run
 
-    $ python scripts/make_pages.py
+    $ ./script/make_pages.py
 
 You can serve the application locally from the project's root with
 
