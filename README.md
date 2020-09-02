@@ -4,7 +4,7 @@ A web application which provides the front-end user interface for the online dis
 
 ## Dependencies
 
-* [Python 3.8](https://www.python.org/downloads/) or higher
+* [Python 3](https://www.python.org/downloads/) (tested on 3.7 and 3.8)
 * [Ruby 2.5.0](https://www.ruby-lang.org/en/) or higher
 * [Jekyll 4.1.1](https://jekyllrb.com/) or higher
 * [Node.js 12.18.3](https://nodejs.org/en/) or higher
@@ -15,7 +15,7 @@ Install [git](https://git-scm.com/) and clone the repository
 
     $ git clone https://github.com/RockefellerArchiveCenter/library_discovery.git
 
-Install Node.js based on included `package.json` dependencies. From the project's root run
+Install Node.js dependencies listed in `package.json`. From the project's root run
 
     $ npm install
 
