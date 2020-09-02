@@ -37,7 +37,7 @@ With the application running, in a separate terminal window you need to build th
 
 You will need to recreate the search index after every update to the application code.
 
-When you're done, shut down application with `ctrl+c`.
+When you're done, shut down the application with `ctrl+c`.
 
 ## License
 
