@@ -1,6 +1,6 @@
 # RAC Library Discovery Catalog System
 
-A Jekyll web application which provides the front-end user interface for the online discovery of bibliographic materials at the Rockefeller Archive Center.
+A web application which provides the front-end user interface for the online discovery of bibliographic materials at the Rockefeller Archive Center.
 
 ## Dependencies
 
