@@ -15,13 +15,19 @@ Install [git](https://git-scm.com/) and clone the repository
 
     $ git clone https://github.com/RockefellerArchiveCenter/library_discovery.git
 
-Once you have made item pages for each resource, you should install Node dependencies. From the project's root run
+Install Node.js dependencies. The project contains a `package.json` file that automatically guides dependency installation. From the project's root run
 
     $ npm install
 
-You can use `/script/build` to create item pages in markdown, initially build the `_site` directory, and create a search index. The `make_pages.py` script will check for ArchivesSpace resource record `.json` files in the `_data/resource/` directory. From the project's root directory run
+Run the `build` script to create item pages, build the site, and make a search index. From the project's root directory run
 
-    $ ./script/make_pages.py
+    $ ./script/build
+
+The `build` script bundles four commands into a single bash script
+  * `script/make_pages.py` takes ArchivesSpace `json` files from `_data/resources` and makes corresponding items pages.
+  * `bundle exec jekyll build` builds the initial Jekyll `_site` directory which can be served
+  * `node js/create-index.js` creates an initial search index based on the data currently in the site. Users will have to recreate the search index on every new build, as rebuilding will destroy the old search index.
+  * `bundle exec htmlproofer ./_site` will only run automatically in TravisCI builds. Validates HTML output with [htmlproofer](https://www.rubydoc.info/gems/html-proofer/1.3.0).
 
 You can serve the application locally from the project's root with
 
