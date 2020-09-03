@@ -26,7 +26,7 @@ layout: null
       "url": "{{site.url}}/items/{{id}}/",
       "author": "{%- include author_list.html -%}",
       "subject": "{{- subjects | join: ', ' -}}",
-      "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | escape -}}",
+      "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | strip | remove: '\' | escape -}}",
       "dates": "{%- include date_list.html -%}",
       "call_numbers": "{%- include call_numbers.html -%}"}{%- unless forloop.last -%},
   {% endunless %}
