@@ -3,5 +3,7 @@
   {%- assign agent_data = site.data.agent_corporate_entity[agent_id] -%}
 {%- elsif agent.ref contains "people" -%}
   {%- assign agent_data = site.data.agent_person[agent_id] -%}
+{%- elsif agent.ref contains "family" -%}
+  {%- assign agent_data = site.data.agent_family[agent_id] -%}
 {%- endif -%}
 {{- agent_data.title -}}
