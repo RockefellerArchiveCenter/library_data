@@ -139,7 +139,7 @@
       "label": "Scope and Contents note",
       "subnotes": [
         {
-          "content": "Contents: \t1: Overview -- Behind it all: a big idea -- What are interpretive labels? -- Types of labels in exhibitions -- 2: Considering the audience -- Who is the audience (and what do they want)? -- Learning styles -- Levels of information and modalities -- Writing visitor-friendly labels -- Selecting the right reading level -- Bilingual labels -- Labels that ask questions -- 3: Tasks -- Getting started (and getting it done) -- The number of words -- Evaluation during development -- Making words and images work together -- Labels for interactive exhibits -- Electronic labels and hypermedia -- Typographic design -- Production and fabrication -- Evaluation after opening -- 4: Summary -- Ten deadly sins and 14 helpful research findings.",
+          "content": "Contents: 1: Overview -- Behind it all: a big idea -- What are interpretive labels? -- Types of labels in exhibitions -- 2: Considering the audience -- Who is the audience (and what do they want)? -- Learning styles -- Levels of information and modalities -- Writing visitor-friendly labels -- Selecting the right reading level -- Bilingual labels -- Labels that ask questions -- 3: Tasks -- Getting started (and getting it done) -- The number of words -- Evaluation during development -- Making words and images work together -- Labels for interactive exhibits -- Electronic labels and hypermedia -- Typographic design -- Production and fabrication -- Evaluation after opening -- 4: Summary -- Ten deadly sins and 14 helpful research findings.",
           "jsonmodel_type": "note_text",
           "publish": true
         }
