@@ -21,7 +21,7 @@ layout: default
 </div>
 
 <div class="item-details">
-  <div class="wrapper">
+  <div class="wrapper--flex-wrap wrapper--attributes">
     <div class="container item__attribute">
       <h2 class="item-details__label">Authors</h2>
       <ul class="list--unstyled">
@@ -42,5 +42,7 @@ layout: default
     </div>
   </div>
   <h2 class="item-details__label">Notes</h2>
-    {% include note_list.html %}
+    <div class="wrapper--flex-wrap">
+      {% include note_list.html %}
+    </div>
 </div>
