@@ -145,7 +145,7 @@
       "label": "Scope and Contents note",
       "subnotes": [
         {
-          "content": "Contents: \tManagement theory and practice -- Leadership in management -- Organizational complexity: a new management paradigm -- Foundations of organizational success -- Planning and reporting -- Project management -- Managing information technology -- Human resources: the critical element -- Communication: the critical ingredient -- Managing archival facilities -- Financial management -- Fund-raising and development -- Public relations.",
+          "content": "Contents: Management theory and practice -- Leadership in management -- Organizational complexity: a new management paradigm -- Foundations of organizational success -- Planning and reporting -- Project management -- Managing information technology -- Human resources: the critical element -- Communication: the critical ingredient -- Managing archival facilities -- Financial management -- Fund-raising and development -- Public relations.",
           "jsonmodel_type": "note_text",
           "publish": true
         }
