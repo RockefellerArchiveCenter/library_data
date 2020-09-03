@@ -2,6 +2,12 @@
 {% for subject in object.subjects %}
   {% capture subject_id %}{{ subject.ref | split: "/" | last }}{% endcapture %}
   {% assign obj = site.data.subject[subject_id] %}
-  <li>{{obj.title}}</li>
+  <li>{{obj.title | strip_newlines | escape}}</li>
 {% endfor %}
+{%- for agent in object.linked_agents -%}
+  {% if agent.role == "subject" %}
+    {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
+    <li>{{agent_title | strip_newlines | escape}}</li>
+  {% endif %}
+{%- endfor -%}
 </ul>
