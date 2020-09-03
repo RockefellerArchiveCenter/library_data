@@ -14,6 +14,16 @@ layout: null
       {%- assign subjects = subjects | push: obj.title -%}
     {%- endfor -%}
 
+    {%- assign subject_agents = "" | split: ',' -%}
+    {%- for agent in object.linked_agents -%}
+      {% if agent.role == "subject" %}
+        {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
+        {%- assign subject_agents = subject_agents | push: agent_title -%}
+      {% endif %}
+    {%- endfor -%}
+
+    {%- assign subjects = subjects | concat: subject_agents -%}
+
     {%- assign notes = "" | split: ',' -%}
     {%- for note in object.notes -%}
       {%- capture content -%}{%- include note_content.html -%}{%- endcapture -%}
@@ -21,11 +31,11 @@ layout: null
     {%- endfor -%}
 
   "/items/{{id}}/": {
-      "title": "{{ object.title | escape | strip_newlines | remove: '\' }}",
+      "title": "{{- object.title | escape | strip_newlines | remove: '\' -}}",
       "ref": "/items/{{id}}/",
       "url": "{{site.url}}/items/{{id}}/",
       "author": "{%- include author_list.html -%}",
-      "subject": "{{- subjects | join: ', ' -}}",
+      "subject": "{{- subjects | join: ', ' | strip_newlines | escape -}}",
       "notes": "{{- notes | join: ', ' | strip_newlines | strip_html | strip | remove: '\' | escape -}}",
       "dates": "{%- include date_list.html -%}",
       "call_numbers": "{%- include call_numbers.html -%}"}{%- unless forloop.last -%},
