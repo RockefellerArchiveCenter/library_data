@@ -7,6 +7,9 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQRWDJK"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <nav>
+      <a href="#main" class="skip-link visually-hidden">Jump directly to main content</a>
+    </nav>
     {% include header.html %}
     {% include scripts.html %}
     {% if page.dir != "/" %}
@@ -20,7 +23,9 @@
     {% endif %}
     <div class="wrapper">
       <div class="container">
-        {{content}}
+        <main id="main">
+          {{content}}
+        </main>
       </div>
     </div>
     {% include footer.html %}

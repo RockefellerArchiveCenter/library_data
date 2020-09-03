@@ -10,7 +10,7 @@ $(document).ready(function() {
           appendString +=
             `<li class="tile">
               <a class="tile__link" href="${item.url}">
-                <p class="tile__title">${item.title}</p>
+                <h2 class="tile__title">${item.title}</h2>
                 <p class="tile__callnumber">${item.call_numbers}</p>
                 <p class="tile__authors"><strong>Author(s)</strong>: ${item.author}</p>
                 <p class="tile__date"><strong>Published</strong>: ${item.dates}</p>
@@ -22,9 +22,9 @@ $(document).ready(function() {
       });
     }
     $(".results__list").prepend(`
-      <p class="results__summary">
+      <h1 class="results__summary">
         ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${query}" in ${searchField ? searchField : "all fields"}
-      </p>`)
+      </h1>`)
     $(".results__list", ".results__loading").removeClass("is-loading");
   }
 
