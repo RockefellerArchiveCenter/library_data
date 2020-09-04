@@ -25,7 +25,7 @@ $(document).ready(function() {
       <h1 class="results__summary">
         ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${query}" in ${searchField ? searchField : "all fields"}
       </h1>`)
-    $(".results__list", ".results__loading").removeClass("is-loading");
+    $(".results__list, .results__loading").removeClass("is-loading");
   }
 
   function getQueryVariable(variable) {
@@ -45,7 +45,7 @@ $(document).ready(function() {
   var searchField = getQueryVariable('field');
 
   if (searchTerm) {
-    $(".results__list", ".results__loading").addClass("is-loading")
+    $(".results__list, .results__loading").addClass("is-loading")
     $("#query").attr("value", searchTerm);
     $("#field").val(searchField);
 
