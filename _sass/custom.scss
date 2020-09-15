@@ -22,6 +22,11 @@
   }
 }
 
+.select__search--wrapper::after {
+  // Makes the down arrow in the search bar clickable
+  pointer-events: none;
+}
+
 .item__header {
   flex-wrap: wrap;
 }
