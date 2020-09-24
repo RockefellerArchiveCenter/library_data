@@ -86,16 +86,16 @@
 .btn--transparent {
   background: transparent;
   border: 1px solid $light-med-gray;
-  color: $med-dark-gray;
+  color: $med-gray;
 }
 
 .btn--gray {
   background: $off-white;
-  color: $med-dark-gray;
+  color: $med-gray;
   border: 1px solid $light-med-gray;
   &:hover {
     background: $lighter-gray;
-    color: $med-dark-gray;
+    color: $med-gray;
   }
 }
 
