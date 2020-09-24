@@ -86,7 +86,6 @@ PLATFORMS
 DEPENDENCIES
   html-proofer
   jekyll
-  jekyll-feed (~> 0.9)
   neat (~> 4.0.0)
 
 BUNDLED WITH
