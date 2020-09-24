@@ -10,7 +10,7 @@ layout: default
     <h1 class="page__title item__title">
       {{ object.title }}
     </h1>
-    <p class="item__callnumber">{% include call_numbers.html object=object %}</p>
+    <p class="item__callnumber">Call Number: {% include call_numbers.html object=object %}</p>
   </div>
   <div class="item__header-right">
     <button class="btn btn--md btn--blue" data-micromodal-trigger="request_modal">
