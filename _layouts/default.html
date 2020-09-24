@@ -21,7 +21,11 @@
       {% capture object_id %}{{page.id}}{% endcapture %}
       {% assign object = site.data.resource[object_id] %}
     {% endif %}
+    {% if page.dir == "/" %}
+    <div class="wrapper--home">
+    {% else %}
     <div class="wrapper">
+    {% endif %}
       <div class="container">
         <main id="main">
           {{content}}

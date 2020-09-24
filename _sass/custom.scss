@@ -73,6 +73,10 @@
   }
 }
 
+.wrapper--home {
+  background: $off-white;
+}
+
 .wrapper--flex-wrap {
   @extend .wrapper;
   flex-wrap: wrap;
