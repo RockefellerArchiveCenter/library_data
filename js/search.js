@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  function displaySearchResults(results, query) {
+  function displaySearchResults(results, displayQuery) {
     if (results.length) { // Are there any results?
       var appendString = '<ul class="tile-list">'
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
     }
     $(".results__list").prepend(`
       <h1 class="results__summary">
-        ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${query}" in ${searchField ? searchField : "all fields"}
+        ${results.length ? results.length : 0} ${results.length === 1 ? "result" : "results" } for "${displayQuery}" in ${searchField ? searchField : "all fields"}
       </h1>`)
     $(".results__list, .results__loading").removeClass("is-loading");
   }
@@ -49,6 +49,20 @@ $(document).ready(function() {
     $("#query").attr("value", searchTerm);
     $("#field").val(searchField);
 
+    searchQuery = searchTerm.trim().toLowerCase();
+    let queryTerms = searchQuery.split(" ");
+    if (queryTerms.length === 1){
+      searchTerm = searchQuery
+    } else {
+      searchQuery = "";
+      for (const term of queryTerms) {
+        searchQuery += `+${term} `;
+      }
+      searchTerm = searchQuery.trim();
+    }
+
+    let displayQuery = searchTerm.replace(/\+/g, '');
+
     $.getJSON("/search_index.json", function(data){
       let index = lunr.Index.load(data)
 
@@ -57,7 +71,8 @@ $(document).ready(function() {
       } else {
         var results = index.search(searchTerm);
       }
-      displaySearchResults(results, searchTerm);
+
+      displaySearchResults(results, displayQuery);
 
     });
 
