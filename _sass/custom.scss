@@ -193,16 +193,23 @@ h2:not(:first-child) {
 
 .tile {
   position: relative;
+  min-height: 120px;
+  @media screen and (min-width: $break-lg) {
+    min-height: 130px;
+  }
 }
 
 .tile__title {
   border-bottom: none;
   padding-bottom: 0;
-  margin-bottom: 0;
-  &:hover {
-    text-decoration: none;
-    color: $dark-gray;
-  }
+  margin: 0;
+}
+
+.tile__link {
+  min-height: 0;
+  font-size: inherit;
+  font-family: inherit;
+  color: $dark-gray;
   &::before {
     content: "";
     position: absolute;
@@ -210,6 +217,10 @@ h2:not(:first-child) {
     bottom: 0;
     left: 0;
     right: 0;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $dark-gray;
   }
 }
 
