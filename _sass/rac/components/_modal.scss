@@ -1,9 +1,5 @@
 @import "../styles";
 
-.modal__info a{
-  text-decoration: underline;
-}
-
 .modal-overlay {
   position: fixed;
   top: 0px;
@@ -86,6 +82,7 @@
 .modal-form__input  {
   font-size: 14px;
   margin-bottom: 18px;
+  padding: 20px 0px;
   & label {
     margin-bottom: 5px;
     float: left;

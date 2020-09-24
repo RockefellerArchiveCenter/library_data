@@ -131,7 +131,7 @@ h2:not(:first-child) {
   display: none;
   &.is-open {
     display: block;
-    height: 85%;
+    height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.15);
     position: fixed;
