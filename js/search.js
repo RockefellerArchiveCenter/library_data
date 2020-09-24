@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  // Stop words pulled from https://lunrjs.com/docs/stop_word_filter.js.html
+  /** Stop words pulled from https://lunrjs.com/docs/stop_word_filter.js.html */
   const stopWords = ['a','able','about','across','after','all','almost','also',
                      'am','among','an','and','any','are','as','at','be','because',
                      'been','but','by','can','cannot','could','dear','did','do',
@@ -16,6 +16,7 @@ $(document).ready(function() {
                      'while','who','whom','why','will','with','would','yet',
                      'you','your']
 
+  /** Displays search results in the DOM */                   
   function displaySearchResults(results, displayQuery) {
     if (results.length) { // Are there any results?
       var appendString = '<ul class="tile-list">'
@@ -44,6 +45,7 @@ $(document).ready(function() {
     $(".results__list, .results__loading").removeClass("is-loading");
   }
 
+  /** Returns the value of a URL parameter */
   function getQueryVariable(variable) {
     let query = window.location.search.substring(1);
     let vars = query.split('&');
@@ -57,6 +59,12 @@ $(document).ready(function() {
     }
   }
 
+  /** Removes unwanted characters from search terms and adds fuzzy matching */
+  function preProcessQueryTerm(term) {
+    var processed = term.replace(/:|"|'|~|\^/g, "")
+    return `${processed}~1`;
+  }
+
   let searchTerm = getQueryVariable('query');
   var searchField = getQueryVariable('field');
 
@@ -68,13 +76,13 @@ $(document).ready(function() {
 
     let queryTerms = searchTerm.trim().toLowerCase().split(" ");
     if (queryTerms.length === 1){
-      parsedQuery = searchQuery
+      parsedQuery = preProcessQueryTerm(queryTerms[0]);
     } else {
       for (const term of queryTerms) {
         if (stopWords.includes(term)) {
-          parsedQuery += `${term} `
+          parsedQuery += `${preProcessQueryTerm(term)} `
         } else {
-          parsedQuery += `+${term} `;
+          parsedQuery += `+${preProcessQueryTerm(term)} `;
         }
       }
       parsedQuery = parsedQuery.trim();
@@ -83,8 +91,8 @@ $(document).ready(function() {
     $.getJSON("/search_index.json", function(data){
       var index = lunr.Index.load(data)
 
-      if (searchField.length){
-        var results = index.search(`${searchField}:${parsedQuery}`); // Get lunr to perform a search
+      if (searchField.length) {
+        var results = index.search(`${searchField}:${parsedQuery}`);
       } else {
         var results = index.search(parsedQuery);
       }
