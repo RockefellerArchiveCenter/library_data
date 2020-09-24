@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+  // Stop words pulled from https://lunrjs.com/docs/stop_word_filter.js.html
+  const stopWords = ['a','able','about','across','after','all','almost','also',
+                     'am','among','an','and','any','are','as','at','be','because',
+                     'been','but','by','can','cannot','could','dear','did','do',
+                     'does','either','else','ever','every','for','from','get',
+                     'got','had','has','have','he','her','hers','him','his','how',
+                     'however','i','if','in','into','is','it','its','just','least',
+                     'let','like','likely','may','me','might','most','must','my',
+                     'neither','no','nor','not','of','off','often','on','only',
+                     'or','other','our','own','rather','said','say','says','she',
+                     'should','since','so','some','than','that','the','their','them',
+                     'then','there','these','they','this','tis','to','too','twas',
+                     'us','wants','was','we','were','what','when','where','which',
+                     'while','who','whom','why','will','with','would','yet',
+                     'you','your']
+
   function displaySearchResults(results, displayQuery) {
     if (results.length) { // Are there any results?
       var appendString = '<ul class="tile-list">'
@@ -45,34 +61,35 @@ $(document).ready(function() {
   var searchField = getQueryVariable('field');
 
   if (searchTerm) {
+    var parsedQuery = "";
     $(".results__list, .results__loading").addClass("is-loading")
     $("#query").attr("value", searchTerm);
     $("#field").val(searchField);
 
-    searchQuery = searchTerm.trim().toLowerCase();
-    let queryTerms = searchQuery.split(" ");
+    let queryTerms = searchTerm.trim().toLowerCase().split(" ");
     if (queryTerms.length === 1){
-      searchTerm = searchQuery
+      parsedQuery = searchQuery
     } else {
-      searchQuery = "";
       for (const term of queryTerms) {
-        searchQuery += `+${term} `;
+        if (stopWords.includes(term)) {
+          parsedQuery += `${term} `
+        } else {
+          parsedQuery += `+${term} `;
+        }
       }
-      searchTerm = searchQuery.trim();
+      parsedQuery = parsedQuery.trim();
     }
 
-    let displayQuery = searchTerm.replace(/\+/g, '');
-
     $.getJSON("/search_index.json", function(data){
-      let index = lunr.Index.load(data)
+      var index = lunr.Index.load(data)
 
       if (searchField.length){
-        var results = index.search(`${searchField}:${searchTerm}`); // Get lunr to perform a search
+        var results = index.search(`${searchField}:${parsedQuery}`); // Get lunr to perform a search
       } else {
-        var results = index.search(searchTerm);
+        var results = index.search(parsedQuery);
       }
 
-      displaySearchResults(results, displayQuery);
+      displaySearchResults(results, searchTerm);
 
     });
 
