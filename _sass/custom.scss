@@ -1,3 +1,14 @@
+.btn--blue {
+  background: $deep-blue;
+  color: $pure-white;
+  border: 1px solid $deep-blue;
+  &:hover {
+    background: $dark-blue;
+    border: 1px solid $dark-blue;
+  }
+}
+
+
 .not-found {
   margin-top: 100px;
   margin-bottom: 200px;
@@ -33,9 +44,6 @@
 
 .item__header-left  {
   @include grid-column(10);
-  @media screen and (min-width: $break-md) {
-    @include grid-column(6);
-  }
   @media screen and (min-width: $break-lg) {
     @include grid-column(7);
   }
@@ -43,7 +51,11 @@
 
 .item__title  {
   @include page-title;
+  font-size: 32px;
   margin-bottom: 10px;
+  @media screen and (min-width: $break-lg) {
+    font-size: 36px;
+  }
 }
 
 .item__callnumber {
@@ -54,13 +66,10 @@
 .item__header-right {
   @include grid-column(10);
   margin-top: 30px;
-  @media screen and (min-width: $break-md) {
-    @include grid-column(4);
-    text-align: right;
-    margin-right: $gutters-default;
-  }
   @media screen and (min-width: $break-lg) {
     @include grid-column(3);
+    text-align: right;
+    margin-right: $gutters-default;
   }
 }
 
@@ -70,18 +79,15 @@
   justify-content: flex-start;
 }
 
-.wrapper--attributes {
-  @media screen and (min-width: $break-md) {
-    border: 1px dotted $deep-navy;
-    padding: 20px;
-  }
-}
-
 .item-details {
   @include grid-column(10);
   @include grid-push(1);
+  font-family: $sans-serif-stack;
   padding-bottom: 80px;
   margin-top: 20px;
+  & p, ul {
+    font-family: $sans-serif-stack;
+  }
 }
 
 .item-details__label {
@@ -104,7 +110,7 @@ h2:not(:first-child) {
     @include grid-column(4);
     margin-left: 0;
     padding-right: 15px;
-    text-align: center;
+    text-align: left;
   }
 }
 
