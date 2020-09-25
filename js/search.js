@@ -16,7 +16,7 @@ $(document).ready(function() {
                      'while','who','whom','why','will','with','would','yet',
                      'you','your']
 
-  /** Displays search results in the DOM */                   
+  /** Displays search results in the DOM */
   function displaySearchResults(results, displayQuery) {
     if (results.length) { // Are there any results?
       var appendString = '<ul class="tile-list">'
@@ -59,10 +59,12 @@ $(document).ready(function() {
     }
   }
 
-  /** Removes unwanted characters from search terms and adds fuzzy matching */
+  /** Removes unwanted characters from search terms, terms that match a
+  * stop words list, adds boolean AND, and fuzzy matching
+  */
   function preProcessQueryTerm(term) {
     var processed = term.replace(/:|"|'|~|\^/g, "")
-    return `${processed}~1`;
+    return (processed && !stopWords.includes(processed)) ? `+${processed}~1` : null
   }
 
   let searchTerm = getQueryVariable('query');
@@ -78,14 +80,11 @@ $(document).ready(function() {
     if (queryTerms.length === 1){
       parsedQuery = preProcessQueryTerm(queryTerms[0]);
     } else {
-      for (const term of queryTerms) {
-        if (stopWords.includes(term)) {
-          parsedQuery += `${preProcessQueryTerm(term)} `
-        } else {
-          parsedQuery += `+${preProcessQueryTerm(term)} `;
-        }
-      }
-      parsedQuery = parsedQuery.trim();
+      parsedQuery = queryTerms.map(t => (
+        preProcessQueryTerm(t)
+      ))
+      .filter(e => (e != null))
+      .join(" ")
     }
 
     $.getJSON("/search_index.json", function(data){
