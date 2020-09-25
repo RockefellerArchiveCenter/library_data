@@ -3,6 +3,8 @@ rvm:
   - 2.6.3
 
 before_install:
+  - sudo apt-get update
+  - sudo apt-get install python3
   - npm install
 
 # Assume bundler is being used, therefore
