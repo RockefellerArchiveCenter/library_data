@@ -10,7 +10,7 @@ PAGE_DIR = abspath(join(__file__, pardir, pardir, OBJ_PREFIX))
 
 
 def clean_string(string):
-    return string.strip().replace("\n", "").replace('"', '\\"')
+    return string.strip().replace("\n", "").replace('"', '\\"').encode("utf-8")
 
 
 def make_pages():
