@@ -64,7 +64,11 @@ $(document).ready(function() {
   */
   function preProcessQueryTerm(term) {
     var processed = term.replace(/:|"|'|~|\^/g, "")
-    return (processed && !stopWords.includes(processed)) ? `+${processed}~1` : null
+    if stopWords.includes(processed) {
+      return `${processed}~1`
+    } else {
+      return processed ? `+${processed}~1` : null
+    }
   }
 
   let searchTerm = getQueryVariable('query');
