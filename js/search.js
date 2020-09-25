@@ -64,7 +64,7 @@ $(document).ready(function() {
   */
   function preProcessQueryTerm(term) {
     var processed = term.replace(/:|"|'|~|\^/g, "")
-    if stopWords.includes(processed) {
+    if (stopWords.includes(processed)) {
       return `${processed}~1`
     } else {
       return processed ? `+${processed}~1` : null
