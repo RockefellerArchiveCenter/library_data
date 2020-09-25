@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
+python --version
+
 python script/make_pages.py
 
 bundle exec jekyll build
