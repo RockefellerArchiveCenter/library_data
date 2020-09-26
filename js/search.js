@@ -59,15 +59,17 @@ $(document).ready(function() {
     }
   }
 
-  /** Removes unwanted characters from search terms, terms that match a
-  * stop words list, adds boolean AND, and fuzzy matching
+  /** Removes unwanted characters from search terms, prefixes with targeted fields,
+  * handles stop words, adds boolean AND, and fuzzy matching
   */
   function preProcessQueryTerm(term) {
-    var processed = term.replace(/:|"|'|~|\^/g, "")
-    if (stopWords.includes(processed)) {
-      return `${processed}~1`
-    } else {
-      return processed ? `+${processed}~1` : null
+    const processed = term.replace(/:|"|'|~|\^/g, "")
+    if (!processed) {
+      return null
+    }
+    else if (searchField.length) {
+      var processedTerm = searchField.length ? `${searchField}:${processed}` : processed
+      return stopWords.includes(processed) ? `${processedTerm}` : `+${processedTerm}`
     }
   }
 
@@ -93,13 +95,7 @@ $(document).ready(function() {
 
     $.getJSON("/search_index.json", function(data){
       var index = lunr.Index.load(data)
-
-      if (searchField.length) {
-        var results = index.search(`${searchField}:${parsedQuery}`);
-      } else {
-        var results = index.search(parsedQuery);
-      }
-
+      var results = index.search(parsedQuery);
       displaySearchResults(results, searchTerm);
 
     });
