@@ -5,8 +5,10 @@ python script/make_pages.py
 
 if JEKYLL_ENV=production; then
   bundle exec jekyll build --config _config.yml
+  echo "production"
 else
   bundle exec jekyll build --config _config.yml,_config_dev.yml
+  echo "development"
 fi
 
 node js/create-index.js
