@@ -67,7 +67,7 @@ $(document).ready(function() {
     if (!processed) {
       return null
     }
-    else if (searchField.length) {
+    else {
       var processedTerm = searchField.length ? `${searchField}:${processed}` : processed
       return stopWords.includes(processed) ? `${processedTerm}` : `+${processedTerm}`
     }
@@ -97,7 +97,6 @@ $(document).ready(function() {
       var index = lunr.Index.load(data)
       var results = index.search(parsedQuery);
       displaySearchResults(results, searchTerm);
-
     });
 
   }
