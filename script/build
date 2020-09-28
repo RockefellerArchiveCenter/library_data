@@ -6,7 +6,7 @@ python script/make_pages.py
 if JEKYLL_ENV=production; then
   bundle exec jekyll build --config _config.yml
 else
-  bundle exec jekyll build --config _config_dev.yml
+  bundle exec jekyll build --config _config.yml,_config_dev.yml
 fi
 
 node js/create-index.js
