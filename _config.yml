@@ -6,13 +6,10 @@
 
 title: library.rockarch.org
 subtitle: The Online Bibliographic Catalog of Rockefeller Archive Center
-email: example@rockarch.org
 description: >- # this means to ignore newlines until "baseurl:"
   The Rockefeller Archive Center's discovery system for bibliographic data.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: rockarch_org
-github_username:  RockefellerArchiveCenter
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -4,7 +4,7 @@ A web application which provides the front-end user interface for the online dis
 
 ## Dependencies
 
-* [Python 3](https://www.python.org/downloads/) (tested on 3.7 and 3.8)
+* [Python 2](https://www.python.org/downloads/) (Tested on 2.7. Python3 will require changes to `make_pages.py`'s encoding.)
 * [Ruby 2.5.0](https://www.ruby-lang.org/en/) or higher
 * [Jekyll 4.1.1](https://jekyllrb.com/) or higher
 * [Node.js 12.18.3](https://nodejs.org/en/) or higher

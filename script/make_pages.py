@@ -10,6 +10,9 @@ PAGE_DIR = abspath(join(__file__, pardir, pardir, OBJ_PREFIX))
 
 
 def clean_string(string):
+    """This presumes a Python2 implementation.
+    Python3 encoding will add byte strings to certain page titles causing yml exceptions.
+    """
     return string.strip().replace("\n", "").replace('"', '\\"').encode("utf-8")
 
 

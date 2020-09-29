@@ -12,6 +12,7 @@ script: ./script/build
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - JEKYLL_ENV=development
   - TRAVIS_CI=true
 
 addons:
