@@ -25,8 +25,8 @@
             <input type="hidden" name="CallNumber" value="{% include call_numbers.html object=object %}">
             <input type="hidden" name="ItemInfo3" value="{{site.url}}/items/{{page.id}}/">
             <div class="modal-form__input">
-              <label for="ScheduledDate">Scheduled date of visit*</label>
-              <input type="date" id="ScheduledDate" name="ScheduledDate" required=required />
+              <label for="ScheduledDate">Scheduled date of visit (mm/dd/yyy) *</label>
+              <input type="text" id="datepicker" name="ScheduledDate" pattern="\d{1,2}/\d{1,2}/\d{4}" required=required />
             </div>
             <div class="modal-form__buttons">
               <button type="submit" class="btn btn--orange btn--sm">Request Item</button>
