@@ -1,0 +1,8 @@
+{%- assign authors = "" | split: ',' -%}
+{%- for agent in object.linked_agents -%}
+  {% if agent.role == "creator" %}
+    {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
+    {%- assign authors = authors | push: agent_title -%}
+  {% endif %}
+{%- endfor -%}
+{{- authors | join: ', ' | strip_newlines | escape -}}

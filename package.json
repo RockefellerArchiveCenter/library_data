@@ -1,0 +1,20 @@
+{
+  "name": "library.rockarch.org",
+  "version": "1.0.0",
+  "description": "The Online Bibliographic Catalog of Rockefeller Archive Center",
+  "main": "index.html",
+  "dependencies": {
+    "lunr": "^2.3.9"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RockefellerArchiveCenter/library_discovery.git"
+  },
+  "author": "Rockefeller Archive Center staff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RockefellerArchiveCenter/library_discovery/issues"
+  },
+  "homepage": "https://github.com/RockefellerArchiveCenter/library_discovery#readme"
+}

@@ -1,0 +1,22 @@
+@import "../styles";
+
+.rac-social-icons {
+  @media screen and (min-width: $break-lg) {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+.social__icon {
+  display: inline-block;
+  height: 30px;
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+  &:hover {
+    svg g, svg path {
+      fill: $burnt-orange;
+      transition: $transition-default;
+    }
+  }
+}

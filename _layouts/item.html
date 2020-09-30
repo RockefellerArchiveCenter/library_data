@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+{% capture object_id %}{{page.id}}{% endcapture %}
+{% assign object = site.data.resource[object_id] %}
+
+<div class="wrapper item__header">
+  <div class="item__header-left">
+    <h1 class="page__title item__title">
+      {{ object.title }}
+    </h1>
+    <p class="item__callnumber">Call Number: {% include call_numbers.html object=object %}</p>
+  </div>
+  <div class="item__header-right">
+    <button class="btn btn--md btn--blue" data-micromodal-trigger="request_modal">
+      Request in Reading Room
+    </button>
+  </div>
+</div>
+
+<div class="item-details">
+  <div class="wrapper--flex-wrap wrapper--attributes">
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Authors</h2>
+      <ul class="list--unstyled">
+      {% for agent in object.linked_agents %}
+        {% if agent.role == "creator" %}
+          <li>{%- include linked_agent_title.html agent=agent -%}</li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+    {%- capture subjects -%}{%- include subject_list.html object=object -%}{%- endcapture -%}
+    {% if subjects.size > 0 %}
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Subject Terms</h2>
+      {% include subject_list.html object=object %}
+    </div>
+    {% endif %}
+    <div class="container item__attribute">
+      <h2 class="item-details__label">Published</h2>
+      {% include date_list.html object=object %}
+    </div>
+  </div>
+  <h2 class="item-details__label">Notes</h2>
+    <div class="wrapper--flex-wrap">
+      {% include note_list.html %}
+    </div>
+</div>
