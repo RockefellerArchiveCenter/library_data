@@ -63,7 +63,7 @@ $(document).ready(function() {
   * handles stop words, adds boolean AND, and fuzzy matching
   */
   function preProcessQueryTerm(term) {
-    const processed = term.replace(/:|"|'|~|\^/g, "")
+    const processed = term.replace(/:|"|'|~|\^/g, "").concat("~1")
     if (!processed) {
       return null
     }
