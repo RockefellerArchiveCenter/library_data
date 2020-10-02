@@ -69,7 +69,7 @@ $(document).ready(function() {
     }
     else {
       var processedTerm = searchField.length ? `${searchField}:${processed}` : processed
-      return stopWords.includes(processed) ? `${processedTerm}` : `+${processedTerm}`
+      return stopWords.includes(processed.replace('~1', '')) ? `${processedTerm}` : `+${processedTerm}`
     }
   }
 
