@@ -63,13 +63,15 @@ $(document).ready(function() {
   * handles stop words, adds boolean AND, and fuzzy matching
   */
   function preProcessQueryTerm(term) {
-    const processed = term.replace(/:|"|'|~|\^/g, "").concat("~1")
-    if (!processed) {
+    const charsRemoved = term.replace(/:|"|'|~|\^/g, "")
+    const fuzzyDistance = 1
+    const fuzzyTerm = charsRemoved.concat(`~${fuzzyDistance}`)
+    if (!charsRemoved) {
       return null
     }
     else {
-      var processedTerm = searchField.length ? `${searchField}:${processed}` : processed
-      return stopWords.includes(processed.replace('~1', '')) ? `${processedTerm}` : `+${processedTerm}`
+      const targetedTerm = searchField.length ? `${searchField}:${fuzzyTerm}` : fuzzyTerm
+      return stopWords.includes(charsRemoved) ? `${targetedTerm}` : `+${targetedTerm}`
     }
   }
 
