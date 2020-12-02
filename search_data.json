@@ -9,20 +9,16 @@ layout: null
 
     {%- assign subjects = "" | split: ',' -%}
     {%- for subject in object.subjects -%}
-      {%- capture subject_id -%}{{ subject.ref | split: '/' | last }}{%- endcapture -%}
-      {%- assign obj = site.data.subject[subject_id] -%}
-      {%- assign subjects = subjects | push: obj.title -%}
+      {%- capture subject_title -%}{%- include title_from_ref.html object=subject -%}{%- endcapture -%}
+      {%- assign subjects = subjects | push: subject_title -%}
     {%- endfor -%}
 
-    {%- assign subject_agents = "" | split: ',' -%}
     {%- for agent in object.linked_agents -%}
       {% if agent.role == "subject" %}
-        {%- capture agent_title -%}{%- include linked_agent_title.html agent=agent -%}{%- endcapture -%}
-        {%- assign subject_agents = subject_agents | push: agent_title -%}
+        {%- capture agent_title -%}{%- include title_from_ref.html object=agent -%}{%- endcapture -%}
+        {%- assign subjects = subjects | push: agent_title -%}
       {% endif %}
     {%- endfor -%}
-
-    {%- assign subjects = subjects | concat: subject_agents -%}
 
     {%- assign notes = "" | split: ',' -%}
     {%- for note in object.notes -%}

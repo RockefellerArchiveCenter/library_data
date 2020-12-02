@@ -26,7 +26,7 @@ layout: default
       <ul class="list--unstyled">
       {% for agent in object.linked_agents %}
         {% if agent.role == "creator" %}
-          <li>{%- include linked_agent_title.html agent=agent -%}</li>
+          <li>{%- include title_from_ref.html object=agent -%}</li>
         {% endif %}
       {% endfor %}
       </ul>
