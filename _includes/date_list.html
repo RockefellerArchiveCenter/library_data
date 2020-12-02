@@ -1,3 +1,4 @@
+{% comment %}Creates a comma-separated list of dates{% endcomment %}
 {%- assign dates = "" | split: ',' -%}
 {%- for date in object.dates -%}
   {%- assign dates = dates | push: date.expression -%}

@@ -1,3 +1,4 @@
+{% comment %}Returns the title of linked agent{% endcomment %}
 {%- capture agent_id -%}{{ agent.ref | split: "/" | last }}{%- endcapture -%}
 {%- if agent.ref contains "corporate_entities" -%}
   {%- assign agent_data = site.data.agent_corporate_entity[agent_id] -%}

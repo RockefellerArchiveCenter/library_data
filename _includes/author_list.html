@@ -1,3 +1,4 @@
+{% comment %}Creates a comma-separated list of author names{% endcomment %}
 {%- assign authors = "" | split: ',' -%}
 {%- for agent in object.linked_agents -%}
   {% if agent.role == "creator" %}

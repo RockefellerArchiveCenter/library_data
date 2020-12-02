@@ -6,6 +6,7 @@ var data;
 buildIndex();
 
 function buildIndex() {
+  /** Constructs a lunr index from search_data.json and saves it as search_index.json */
   fs.readFile(path.resolve(__dirname, '../_site/search_data.json'), 'utf8', function(err, data) {
       if (err) throw err;
       documents = JSON.parse(data);
