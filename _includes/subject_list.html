@@ -1,8 +1,7 @@
 <ul class="list--unstyled">
 {% for subject in object.subjects %}
-  {% capture subject_id %}{{ subject.ref | split: "/" | last }}{% endcapture %}
-  {% assign obj = site.data.subject[subject_id] %}
-  <li>{{obj.title | strip_newlines | escape}}</li>
+  {%- capture subject_title -%}{%- include title_from_ref.html object=subject -%}{%- endcapture -%}
+  <li>{{subject_title | strip_newlines | escape}}</li>
 {% endfor %}
 {%- for agent in object.linked_agents -%}
   {% if agent.role == "subject" %}
