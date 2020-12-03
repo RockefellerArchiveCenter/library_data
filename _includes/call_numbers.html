@@ -1,3 +1,4 @@
+{% comment %}Creates a comma-separated list of call numbers{% endcomment %}
 {%- assign call_numbers = "" | split: ',' -%}
 {% for instance in object.instances %}
   {%- capture top_container_id -%}

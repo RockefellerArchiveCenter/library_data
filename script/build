@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#!/usr/bin/env python2.7
+
 set -e # halt script on error
 
 python script/make_pages.py
