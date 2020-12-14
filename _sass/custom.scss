@@ -173,26 +173,29 @@ h2:not(:first-child) {
   @include grid-column(10);
   @include grid-push(1);
   margin-bottom: 40px;
+  min-height: 50vh;
 }
 
 .results__loading {
+  margin-top: 0;
   text-align: center;
   opacity: 0;
   height: 0;
-  transition: $transition-default;
+  transition: opacity 0.2s ease;
   &.is-loading {
+    margin-top: 4rem;
     opacity: 1;
     height: 100%;
-    transition: $transition-default;
+    transition: opacity 0.2s ease;
   }
 }
 
 .results__list {
   opacity: 1;
-  transition: $transition-default;
+  transition: opacity 0.2s ease;
   &.is-loading {
     opacity: 0;
-    transition: $transition-default;
+    transition: opacity 0.2s ease;
   }
 }
 
