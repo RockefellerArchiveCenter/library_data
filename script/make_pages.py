@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 import json
+import sys
 from os import listdir, mkdir, pardir
 from os.path import abspath, basename, isdir, join
 
@@ -13,7 +14,8 @@ def clean_string(string):
     """This presumes a Python2 implementation.
     Python3 encoding will add byte strings to certain page titles causing yml exceptions.
     """
-    return string.strip().replace("\n", "").replace('"', '\\"').encode("utf-8")
+    replaced = string.strip().replace("\n", "").replace('"', '\\"')
+    return replaced.encode("utf-8") if (sys.version_info[0] < 3) else replaced
 
 
 def make_pages():

@@ -6,10 +6,15 @@
   "dependencies": {
     "lunr": "^2.3.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "qunit": "^2.13.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RockefellerArchiveCenter/library_discovery.git"
+  },
+  "scripts": {
+    "test": "qunit"
   },
   "author": "Rockefeller Archive Center staff",
   "license": "MIT",
