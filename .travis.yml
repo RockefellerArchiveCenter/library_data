@@ -3,8 +3,9 @@ rvm:
   - 2.6.3
 
 before_install:
-  - npm install
+  - nvm install --lts
   - node -v
+  - npm install
 
 script:
   - ./script/build
