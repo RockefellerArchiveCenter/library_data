@@ -1,12 +1,7 @@
 #!/usr/bin/python
 
-"""Creates pages from JSON data files so that the site will build correctly.
-
-This code relies on Python 2. Using Python 3 will add byte strings to certain
-page titles, which will cause YAML exceptions.
-"""
-
 import json
+import sys
 from os import listdir, mkdir, pardir
 from os.path import abspath, basename, isdir, join
 
@@ -16,8 +11,9 @@ PAGE_DIR = abspath(join(__file__, pardir, pardir, OBJ_PREFIX))
 
 
 def clean_string(string):
-    """Removes unwanted characters from strings."""
-    return string.strip().replace("\n", "").replace('"', '\\"').encode("utf-8")
+    """Removes unwanted characters from a string."""
+    replaced = string.strip().replace("\n", "").replace('"', '\\"')
+    return replaced.encode("utf-8") if (sys.version_info[0] < 3) else replaced
 
 
 def make_pages():
