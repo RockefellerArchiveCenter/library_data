@@ -1,20 +1,3 @@
-/** Stop words pulled from https://lunrjs.com/docs/stop_word_filter.js.html */
-const stopWords = ['a','able','about','across','after','all','almost','also',
-                   'am','among','an','and','any','are','as','at','be','because',
-                   'been','but','by','can','cannot','could','dear','did','do',
-                   'does','either','else','ever','every','for','from','get',
-                   'got','had','has','have','he','her','hers','him','his','how',
-                   'however','i','if','in','into','is','it','its','just','least',
-                   'let','like','likely','may','me','might','most','must','my',
-                   'neither','no','nor','not','of','off','often','on','only',
-                   'or','other','our','own','rather','said','say','says','she',
-                   'should','since','so','some','than','that','the','their','them',
-                   'then','there','these','they','this','tis','to','too','twas',
-                   'us','wants','was','we','were','what','when','where','which',
-                   'while','who','whom','why','will','with','would','yet',
-                   'you','your']
-
-
  /** Displays search results in the DOM */
  function displaySearchResults(results, displayQuery, searchField) {
    if (results.length) { // Are there any results?
@@ -43,59 +26,32 @@ const stopWords = ['a','able','about','across','after','all','almost','also',
      </h1>`)
  }
 
- /** Returns the value of a URL parameter */
- function getQueryVariable(variable) {
-   let query = window.location.search.substring(1);
-   let vars = query.split('&');
-
-   for (var i = 0; i < vars.length; i++) {
-     let pair = vars[i].split('=');
-
-     if (pair[0] === variable) {
-       return decodeURIComponent(pair[1].replace(/\+/g, '%20'));
-     }
-   }
- }
-
- /** Removes unwanted characters from search terms, prefixes with targeted fields,
- * handles stop words, adds boolean AND, and fuzzy matching
- */
- function preProcessQueryTerm(term, searchField) {
-   const charsRemoved = term.replace(/:|"|'|~|\^/g, "")
-   const fuzzyDistance = 1
-   const fuzzyTerm = charsRemoved.concat(`~${fuzzyDistance}`)
-   if (!charsRemoved) {
-     return null
-   }
-   else {
-     const targetedTerm = searchField.length ? `${searchField}:${fuzzyTerm}` : fuzzyTerm
-     return stopWords.includes(charsRemoved) ? `${targetedTerm}` : `+${targetedTerm}`
-   }
- }
-
-
 $(document).ready(function() {
 
-  const searchTerm = getQueryVariable('query');
-  const searchField = getQueryVariable('field');
+  $.getScript("/js/search_helpers.js", function() {
 
-  if (searchTerm) {
-    $(".results__list, .results__loading").addClass("is-loading")
-    $("#query").attr("value", searchTerm);
-    $("#field").val(searchField);
+    const query = window.location.search.substring(1);
+    const searchTerm = getQueryVariable(query, 'query');
+    const searchField = getQueryVariable(query, 'field');
 
-    const queryTerms = searchTerm.trim().toLowerCase().split(" ");
-    const parsedQuery = queryTerms.map(t => (
-      preProcessQueryTerm(t, searchField)
-    )).filter(e => (e != null)).join(" ")
+    if (searchTerm) {
+      $(".results__list, .results__loading").addClass("is-loading")
+      $("#query").attr("value", searchTerm);
+      $("#field").val(searchField);
 
-    $.getJSON("/search_index.json", function(data){
-      var index = lunr.Index.load(data)
-      var results = index.search(parsedQuery);
-      displaySearchResults(results, searchTerm, searchField);
-      $(".results__list, .results__loading").removeClass("is-loading");
-    });
+      const queryTerms = searchTerm.trim().toLowerCase().split(" ");
+      const parsedQuery = queryTerms.map(t => (
+        preProcessQueryTerm(t, searchField)
+      )).filter(e => (e != null)).join(" ")
 
-  }
+      $.getJSON("/search_index.json", function(data){
+        const index = lunr.Index.load(data)
+        const results = index.search(parsedQuery);
+        displaySearchResults(results, searchTerm, searchField);
+        $(".results__list, .results__loading").removeClass("is-loading");
+      });
+    }
+
+  })
 
 });
