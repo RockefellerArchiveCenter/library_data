@@ -12,6 +12,7 @@
     </nav>
     {% include header.html %}
     {% include scripts.html %}
+    {% comment %}Shows search bar on interior pages{% endcomment %}
     {% if page.dir != "/" %}
       <div class="wrapper">
         <div class="search--bar">
@@ -21,6 +22,7 @@
       {% capture object_id %}{{page.id}}{% endcapture %}
       {% assign object = site.data.resource[object_id] %}
     {% endif %}
+    {% comment %}Displays home page on root URL{% endcomment %}
     {% if page.dir == "/" %}
     <div class="wrapper--home">
     {% else %}

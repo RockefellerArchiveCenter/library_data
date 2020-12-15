@@ -11,14 +11,16 @@ PAGE_DIR = abspath(join(__file__, pardir, pardir, OBJ_PREFIX))
 
 
 def clean_string(string):
-    """This presumes a Python2 implementation.
-    Python3 encoding will add byte strings to certain page titles causing yml exceptions.
-    """
+    """Removes unwanted characters from a string."""
     replaced = string.strip().replace("\n", "").replace('"', '\\"')
     return replaced.encode("utf-8") if (sys.version_info[0] < 3) else replaced
 
 
 def make_pages():
+    """Creates Markdown pages for each JSON file found in DATA_DIR.
+
+    Data from the file to create a YAML header in the file.
+    """
     if not isdir(PAGE_DIR):
         mkdir(PAGE_DIR)
     for f in listdir(DATA_DIR):
