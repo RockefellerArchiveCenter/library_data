@@ -4,6 +4,7 @@ rvm:
 
 before_install:
   - npm install
+  - node -v
 
 script:
   - ./script/build
