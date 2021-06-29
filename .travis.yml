@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.6.3
+  - 2.7.3
 
 before_install:
   - nvm install --lts # need to install a more recent version of node
